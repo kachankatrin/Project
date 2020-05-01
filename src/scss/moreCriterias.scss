@@ -1,0 +1,23 @@
+@import './radioButtons.scss';
+@import './criteriasNutriments.scss';
+
+.moreCriterias {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+  .CriteriasNutriments, .Ingredients {
+    // flex: 1;
+    width: 44%;
+  }
+  .toggleSearch{
+    &:before {
+      background-color: #d63447;
+    }
+    &:checked {
+      background-color: #d63447;
+      &:before {
+        border: 0.5px solid #d1cebd;
+      }
+    }
+  } 
+}

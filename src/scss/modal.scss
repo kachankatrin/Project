@@ -1,0 +1,100 @@
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.modalcont {
+  background-color: #d1cebd;
+  z-index: 200;
+  width: 90%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 5rem 0rem;
+  padding: 8rem;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+  box-shadow: 8px 8px 8px grey;
+  .modal1 {
+    text-align: left;
+    position: relative;
+    img {
+      object-fit: contain;
+      align-self: start;
+      padding: 0.5rem 0;
+      flex: 2;
+    }
+    h1 {
+      color: #d63447;
+      font-family: Montserrat-Bold;
+      text-transform: capitalize;
+    }
+    h4 {
+      color: #f57b51;
+      font-family: Montserrat-Medium;
+      margin: 1rem 0rem;
+    }
+    .modalInfo {
+      div:first-child {
+        flex: 2;
+        .infoName {
+          color: #d63447;
+          line-height: 1.6;
+          font-family: Montserrat-SemiBold;
+          padding-right: 0.5rem;
+        }
+        span {
+          font-family: Montserrat-Light;
+          letter-spacing: 0.5px;
+        }
+      }
+    }
+    .nScoreNova {
+      .nutrifacts {
+        flex: 2;
+        .nutrition {
+          flex: 1;
+          div:first-child {
+            flex: 3;
+          }
+          div:last-child {
+            flex: 4;
+          .nutrilevels {
+            li {
+              position: relative;
+              padding: 0rem 3rem;
+              line-height: 1.6;
+              font-family: Montserrat-Light;
+              .circle {
+                height: 20px;
+                width: 20px;
+                border-radius: 30px;
+                position: absolute;
+                left: 0%;
+              }
+              .low {
+                background-color: green;
+              }
+              .high {
+                background-color: red;
+              }
+              .moderate {
+                background-color: orange
+              }
+            }
+          }
+        }
+        }
+      
+      }
+      .nova {
+        flex: 1;
+      }
+    }
+  }
+}
+
+
+

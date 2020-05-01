@@ -1,0 +1,47 @@
+.ragiogroup {
+  margin: 0.5rem 0;
+.radioContainer {
+  position: relative;
+  padding: 0 2.5rem;
+  cursor: pointer;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    &:checked ~ .customRadio {
+      background-color: #d63447;
+      &:after {
+        display: block;
+      }
+    }
+    &:hover ~ .customRadio {
+      background-color: #d1cebd;
+      cursor: pointer;
+    }
+  }
+  .customRadio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #f6eedf;
+    border: 1px solid #d1cebd;
+    border-radius: 50%;
+    &:after {
+      content: '';
+      position: absolute;
+      display: none;
+      top: 4px;
+      left: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f6eedf;
+    }
+  }
+  &:hover input:checked ~ .customRadio{
+    background-color: #d63447;
+  }
+}
+}

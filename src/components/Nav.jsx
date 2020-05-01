@@ -1,11 +1,9 @@
 import React from 'react';
-import {Navbar, Nav as Navigation} from 'react-bootstrap';
 function Nav(props) {
   return (
-    <Navbar>
-    <Navigation className='mr-auto'>{props.children.map(item => <Navigation.Link>{item}</Navigation.Link>)}</Navigation>
-    </Navbar>
+    <ul className="navigation">
+      {props.children.map((item, i) => i !== props.children.length - 1 ? <li><a>{item}</a></li> : <div className='check'>{item}</div>)}
+    </ul>
   )
-
 }
 export default Nav;

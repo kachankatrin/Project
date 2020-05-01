@@ -1,57 +1,87 @@
 import React from 'react';
 import CreatePages from '../components/pages';
-import {fetchOOF} from '../store/actions/SomeAction';
+import { fetchOOF, handleModalOpen, handleDarkMode, handleSelectModalProduct } from '../store/actions/SomeAction';
 import { connect } from 'react-redux';
-
+import '../App.scss';
+import Modal from '../components/modal';
+import Product from '../components/Listitem';
+// import {doted} from '../components/pages'
+// let modalarr;
 class Results extends React.Component {
   state = {
-    // products: [],
-    // totalPages: 0,
     currentPage: 1,
+    doted: {}
   }
-  // handlePagination = (i) => {
-  //   this.setState({
-  //     currentPage: i 
-  //   })
-  //   console.log(this.state.currentPage, 'in handler')
-  //   this.props.fetchOOF(this.state.search, i)
-  // }
-  handlePagination = (i) => {
+  handleDoted = (dotedObj) => {
     this.setState({
-      currentPage: i 
+      doted: dotedObj
+    })
+  }
+  handlePagination = (item, dotedObj) => {
+    // const doted = i > this.state.currentPage.id ? this.state.currentPage + 3 : this.state.currentPage - 3;
+    // const currentPage = item === "..." ? doted  : item
+    console.log(this.state.currentPage)
+    console.log("HP", dotedObj)
+    this.setState({
+      currentPage: item,
+      doted: dotedObj
     })
     console.log(this.state.currentPage, 'in handler')
-    console.log(this.props.staff.search, 'pagin')
-    this.props.fetchOOF(this.props.staff.searchForPaging, i)
+    console.log(this.props.staff.products, 'search')
+    this.props.fetchOOF(this.props.staff.search, item, this.props.staff.tagtype, this.props.staff.tagContains, this.props.staff.tag, this.props.staff.tagtype1, this.props.staff.tagContains1, this.props.staff.tag1, this.props.additives, this.props.staff.ingPalmOil, this.props.staff.ingMayBePalmOil, this.props.staff.ingPalmOilORMayBePalmOil, this.props.staff.nutriment, this.props.staff.comparement, this.props.staff.nutrimentValue, this.props.staff.energyUnit, this.props.staff.nutriment1, this.props.staff.comparement1, this.props.staff.nutrimentValue1, this.props.staff.energyUnit1)
+  }
+  handleProductClick = (product) => {
+    console.log(product)
+    this.props.handleModalOpen()
+    this.props.handleSelectModalProduct(product)
+    // product.stopPropagation()
   }
   render() {
     console.log(this.props.staff)
+    const darkClass = this.props.staff.isDarkMode ? 'dark' : '';
+    const darkModal = this.props.staff.isDarkMode ? 'darkModal' : '';
+    // const containerStyle = "container " + (this.props.staff.isDarkMode ? 'dark' : '');
     return (
-      <div>
-        <h1>Here are some results</h1>
-        
-        <p>
-          You can manage your search critiria
-        </p>
-        {this.props.staff.products.map(item => <div>{item.product_name_en ? item.product_name_en : item.product_name_fr}</div>)}
-      <div>
-        <ul>
-          <CreatePages allPages={this.props.staff.totalPages} 
-                       currentPage={this.state.currentPage} 
+      <div className={"page container " + darkClass}>
+        <h1>Search results</h1>
+        <div>
+          <Product className='gridContainer' products={this.props.staff.products}
+            handleProductClick={this.handleProductClick}
+          />
+          {this.props.staff.isModalOpen ? <Modal
+            handleModalOpen={this.props.handleModalOpen}
+            product={this.props.staff.modalPicture}
+            //  picture={{src:this.props.staff.productsForModal.image_front_url}}
+            products={this.props.staff.productsForModal}
+            //  quantity={this.props.staff.productsForModal.quantity}
+            // packaging={this.props.staff.productsForModal.packaging_tags}
+            className={darkModal}
+          >
+          </Modal>
+            : null}
+        </div>
+        <div>
+          <CreatePages allPages={this.props.staff.totalPages}
+                       currentPage={this.state.currentPage}
                        handlePagination={this.handlePagination} />
-        </ul>
-      </div>
-        
+        </div>
+
       </div>
     )
   }
 }
 const mapStateToProps = (state) => {
-  return{
+  return {
     staff: state.staff
   }
 }
 const mapDispatchToProps = {
-  fetchOOF
+  fetchOOF,
+  handleModalOpen,
+  handleDarkMode,
+  handleSelectModalProduct
+
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Results);
+export default connect(mapStateToProps, mapDispatchToProps)(Results);
+
+          // {this.props.staff.products.map(item => <div className='red' onClick={this.handleProductClick}><h2>{item.product_name_en ? item.product_name_en : item.product_name_fr || item.product_name_de}</h2></div>)}
