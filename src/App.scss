@@ -27,11 +27,17 @@ body {
   overflow-y: scroll;
 }
 .dark {
-  background-color: #a7a6a2;
+  background-color: #a7a6a2 !important;
 }
 .naviItem {
   color: #f6eedf;
   font-family: Montserrat-Bold;
+  &:hover {
+    color: #f6eedf;
+  }
+}
+.red {
+  color: red;
 }
 h2 {
     color: #f57b51;
@@ -182,7 +188,7 @@ li {
 
 label {
   font-family: Montserrat-SemiBold;
-    padding: 0 1rem;
+    // padding: 0 1rem;
     vertical-align: top;
     color: #d1cebd;
     // p{
@@ -192,6 +198,11 @@ label {
     // }
 }
 
+.active {
+  background-color: #f57b51;
+  color: #f6eedf;
+  font-family: Montserrat-Bold;
+}
 
 
 
@@ -205,26 +216,23 @@ label {
 
 
 
-
-
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 
 @font-face {
   font-family: Montserrat-Bold;
   src: url("./fonts/montserrat/Montserrat-Bold.otf");
 }
-@font-face {
-  font-family: Montserrat-Italic;
-  src: url("./fonts/montserrat/Montserrat-Italic.otf")
-}
+// @font-face {
+//   font-family: Montserrat-Italic;
+//   src: url("./fonts/montserrat/Montserrat-Italic.otf")
+// }
 @font-face {
   font-family: Montserrat-Light;
   src: url("./fonts/montserrat/Montserrat-Light.otf");
-}
-
-@font-face {
-  font-family: JosefinSans-Regular;
-  src: url("./fonts/josefin-sans/JosefinSans-Regular.ttf")
 }
 
 @font-face {

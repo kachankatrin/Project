@@ -1,10 +1,11 @@
 @import './radioButtons.scss';
 @import './criteriasNutriments.scss';
-
+.advanced{
+  width: 55%;
 .moreCriterias {
   display: flex;
   justify-content: space-between;
-  width: 55%;
+  margin: 2rem 0;
   .CriteriasNutriments, .Ingredients {
     // flex: 1;
     width: 44%;
@@ -20,4 +21,5 @@
       }
     }
   } 
+}
 }

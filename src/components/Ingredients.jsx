@@ -1,5 +1,5 @@
 import React from 'react'
-import { GetSingleItem, GetSingleItemWithoutLang } from './productCharacteristics'
+import { GetSingleItem } from './productCharacteristics'
 
 function Ingredients(props) {
   const newIngredAnalysis = props.products.ingredients_analysis_tags ? props.products.ingredients_analysis_tags.filter(item => !item.includes('unknown')) : null;

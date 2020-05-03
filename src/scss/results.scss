@@ -4,15 +4,24 @@
     font-family: Montserrat-Bold;
     color: #d63447;
   }
-  div {
-    .gridContainer {
+  .loader { 
+    border: 0.8rem solid #d1cebd;
+    margin: auto;
+    text-align: center;
+    border-radius: 50%;
+    border-top: 0.8rem solid #d63447;
+    width: 40px;
+    height: 40px;
+    // -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }
+    .gridContainer1 {
       padding: 5rem 0;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
       // grid-template-rows: repeat(3, 250px);
       grid-gap: 2vmin;
       grid-auto-rows: 250px;
-      
       li {
         transition: all .5s ease-in-out;
         border-radius: 10px;
@@ -43,8 +52,10 @@
     }
     
   }
+h5 {
+  font-family: Montserrat-Regular;
+  padding: 2rem 0;
 }
-
 .paging {
   display: flex;
   justify-content: center;

@@ -1,7 +1,7 @@
 import React from 'react'
 
 function RadioButtons(props) {
-  const {name, values, handleChange} = props;
+  const { name, values, handleChange } = props;
   // const changeCheck = (e, item) => {
   //   console.log(e.target, item)
   //   return e.target === item ? item.checked = true : item.checked = false
@@ -9,24 +9,26 @@ function RadioButtons(props) {
   // }
   return (
     <div>
-    <h3>{name}</h3>
-    <div>
+      <h3>{name}</h3>
+      <div>
         {values.map(item => {
-          return(
+          return (
             <div className='ragiogroup'>
-            <label className="radioContainer">{item.label}
-            <input 
-            type='radio' 
-            checked={item.checked} 
-            name={name} value={item.value} onChange={handleChange} 
-            />
-            <span className='customRadio' checked={item.checked} 
-            name={name} value={item.value} onChange={handleChange}></span>
-            </label>
+              <label className="radioContainer">{item.label}
+                <input
+                  type='radio'
+                  checked={item.checked}
+                  name={name} value={item.value} onChange={handleChange}
+                />
+                <div className={'radio-bg ' + props.darkClass}>
+                  <span className='customRadio' checked={item.checked}
+                    name={name} value={item.value} onChange={handleChange}></span>
+                </div>
+              </label>
             </div>
           )
         })}
-        </div>
+      </div>
     </div>
   )
 }

@@ -1,8 +1,10 @@
 .CriteriasNutriments {
+  .select-margin {
+    margin: 2rem 0;
+  }
   .inputBg {
     align-self: flex-start;
     height: 24px;
-    // padding: 1rem 0;
     border-radius: 5px;
     width: 65%;
     input[type=search] {
@@ -20,16 +22,15 @@
           width: 100%;
           border: none;
           box-shadow: 0 0 2px #d1cebd;
-          // padding: 1.5rem;
-          // border-radius: 20px;
           background-color: rgba(246, 238, 223, 0.7);
           font-family: Montserrat-SemiBold;
           color: #000000a6; 
-
+          &:hover, &:focus {
+            box-shadow: 3px 3px 9px #d1cebd;
+            cursor: pointer;
+          }
         }
-        
       }
-    
   }
 }
   .flex {
@@ -41,11 +42,12 @@
       }
     }
   }
-  // .qty {
-  //   width: 28%;
-  //   margin-right: 2rem;
-  // }
-  .toggle-span{
-    font-size: 14px;
+
+    .toggle-span{
+    font-size: 13px;
   }
+  .nutriments {
+    margin-top: 7rem;
+  }
+
 }

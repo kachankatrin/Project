@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetSingleItem, GetSingleItemWithoutLang } from './productCharacteristics'
+// import { GetSingleItem, GetSingleItemWithoutLang } from './productCharacteristics'
 import { nova_groups, nutriscore } from '../utils';
 import SmallInfo from '../components/SmallInfo';
 import Ingredients from '../components/Ingredients'

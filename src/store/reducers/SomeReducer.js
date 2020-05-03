@@ -1,4 +1,4 @@
-import {DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS} from '../actions/SomeAction';
+import {DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS} from '../actions/SomeAction';
 
 export const initStore = {
   products: [],
@@ -27,15 +27,29 @@ export const initStore = {
   isDarkMode: false,
   productsForModal: null,
   isMoreCriteriasOpen: false,
+  loading: false,
+  text: ''
 }
 
 export const actionReducer = (initialState=initStore, action) => {
+  console.log(action.payload)
   if(action.type === DATA_LOADED) {
+    console.log(initialState.loading, 'fetchhhhhhhhhh')
     return{
       ...initialState,
       products: action.payload.products,
+      loading: false,
       totalPages: Math.ceil(action.payload.count / action.payload.page_size)
     }
+  }
+  if (action.type === CHANGE_LOADER_STATUS) {
+    console.log(initialState.loading, 'xfgfyfjycdgdhcdhfgfdsfddgfhfghgfgfgfhg')
+      return {
+        ...initialState,
+        loading: action.payload.show,
+        text: action.payload.text
+      }
+   
   }
   if(action.type === CHANGE_SEARCH) {
     return {

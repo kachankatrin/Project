@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetSingleItem, GetSingleItemWithoutLang } from './productCharacteristics'
+import { GetSingleItem } from './productCharacteristics'
 
 function SmallInfo(props) {
   return (
