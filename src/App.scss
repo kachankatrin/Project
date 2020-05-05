@@ -21,10 +21,11 @@ body {
   font-size: 1.6rem;
 }
 .page {
-  padding: 10rem;
+  padding: 10rem 10rem 5rem;
   background-color: #f6eedf;
   height: 100vh;
   overflow-y: scroll;
+  margin: auto;
 }
 .dark {
   background-color: #a7a6a2 !important;
@@ -44,6 +45,7 @@ h2 {
     font-family: Montserrat-SemiBold;
     margin: 4rem 0 1rem;
     text-transform: uppercase;
+    width: max-content;
 }
 h3 {
   color: #d63447;
@@ -85,117 +87,19 @@ h3 {
 .darkModal {
   background-color: #807e7b;
 }
-
-
-
-
 li {
   cursor: pointer;
   list-style: none;
 }
-
-// .switch {
-//   position: relative;
-//   display: inline-block;
-//   width: 55px;
-//   height: 25px;
-// }
-
-// .switch input { 
-//   opacity: 0;
-//   width: 0;
-//   height: 0;
-// }
-
-// .slider {
-//   position: absolute;
-//   cursor: pointer;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background-color: #ccc;
-//   -webkit-transition: .4s;
-//   transition: .4s;
-// }
-
-// .slider:before {
-//   position: absolute;
-//   content: "";
-//   height: 21px;
-//   width: 21px;
-//   left: 4px;
-//   bottom: 2px;
-//   background-color: white;
-//   -webkit-transition: .4s;
-//   transition: .4s;
-// }
-
-// input:checked + .slider {
-//   background-color: #2196F3;
-// }
-
-// input:focus + .slider {
-//   box-shadow: 0 0 1px #2196F3;
-// }
-
-// input:checked + .slider:before {
-//   -webkit-transform: translateX(26px);
-//   -ms-transform: translateX(26px);
-//   transform: translateX(26px);
-// }
-
-// /* Rounded sliders */
-// .slider.round {
-//   border-radius: 30px;
-// }
-
-// .slider.round:before {
-//   border-radius: 50%;
-// }
-// .button {
-//   position: absolute;
-//   top: 50%;
-//   background-color: transparent;
-//   border-radius: 30px;
-//   font-family: monospace;
-//   font-size: 20px;
-//   font-weight: 600;
-//   color: #3f00ffad;
-//   z-index: 1000;
-// }
-
-
-
-// .prev {
-//   left: 1%;
-// }
-// .next {
-//   right: 1%;
-// }
-
-
-
-
 .check {
   align-self: center;
+  padding: 1.5rem;
 }
-
-
-
-
-
-
 label {
   font-family: Montserrat-SemiBold;
-    // padding: 0 1rem;
     vertical-align: top;
     color: #d1cebd;
-    // p{
-    //   font-family: Montserrat-SemiBold;
-    //   display: inline;
-    //   padding: 1rem;
-    // }
+    padding: 0 0.5rem;
 }
 
 .active {
@@ -204,32 +108,369 @@ label {
   font-family: Montserrat-Bold;
 }
 
+@media only screen and (min-width: 300px) and (max-width: 459px) {
+  html {
+    font-size: 8px;
+  }
+  .navigation {
+    padding-left: 3rem;
+    flex-flow: column;
+    .check {
+      align-self: start;
+    }
+  }
+  .search {
+    h3 {
+      font-size: 1.7rem;
+    }
+    form {
+      .inputBg {
+        width: 75%;
+      }
+      .searchLinkBtn {
+        width: 50%;
+      }
+      .advanced {
+        width: 75%;
+        .moreCriterias {
+          .CriteriasNutriments {
+            .inputBg {
+              width: 100%;
+            }
+            .flex {
+              .toggle-span {
+                font-size: 9px;
+                padding: 2px;
+              }
+            }
+          }
+          label {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+  }
+  .container {
+    .modalcont {
+      padding: 2rem;
+      .modal1 {
+        .nScoreNova {
+          .nova {
+            margin: 1rem auto;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 599px) {
+  .page {
+    padding: 15rem 0 5rem;
+  }
+  button{ 
+    line-height: 1.3;
+    padding: 0 1rem; 
+  }
+  .toggle:checked:before, .toggle:before  {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+  .search {
+    form {
+      .searchLinkBtn {
+        a { 
+          line-height: 1.3;
+          padding: 0 1rem; 
+          width: min-content;        
+        }
+      }
+    }
+    .advanced {
+      .moreCriterias {
+        .CriteriasNutriments {
+          .inputBg {
+            select {
+              font-size: 1.1rem;
+            }
+            input[type=search] {
+              &::placeholder {
+                font-size: 1.3rem;
+              }
+            }
+          }
+          .flex {
+            width: 100%;
+            justify-content: start;
+          }
+        }
+      }
+    }
+  }
+  .container {
+    padding: 15rem 7rem 5rem;
+    h1:first-child {
+      text-align: center;
+    }
+    .modalcont {
+      .modal1 {
+        .modalInfo {
+          flex-flow: column wrap;
+        }
+        .nScoreNova {
+          .nova {
+            flex: 0;
+            
+            h2 {
+              width: min-content;
+              margin: 0rem 0 1rem;
+            }
+          }
+          .nutrifacts {
+            width: fit-content;
+            padding: 0;
+            h2 {
+              margin: auto;
+              padding-right: 4.2rem;
+            }
+            .nutrition {
+              flex: 0;
+              width: min-content;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+    .paging {
+      li {
+        padding: 0.5rem;
+      }
+    }
+  }
+}
 
+@media only screen and (min-width: 460px) and (max-width: 599px) {
+  html {
+    font-size: 9px;
+  }
+  .search{
+    form {
+      .inputBg {
+        width: 60%;
+      }
+      .searchLinkBtn {
+        width: 60%;
+      }
+    }
+    .advanced {
+      width: 60%;
+      .moreCriterias {
+        .CriteriasNutriments {
+          .inputBg {
+            width: 95%;
+          }
+          .flex {
+            .toggle-span {
+              font-size: 10px;
+              padding: 1px;
+            }
+          }
+        }
+        label {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .container {
+    .modalcont {
+      padding: 5rem;
+    }
+  }
+}
 
+@media only screen and (min-width: 600px) and (max-width: 799px) {
+  html {
+    font-size: 9px;
+  }
+  .page {
+    padding: 15rem 0 5rem;
+  }
+  .search {
+    form {
+      .inputBg {
+        width: 55%;
+      }
+      .advanced {
+        width: 60%;
+        .moreCriterias {
+          .CriteriasNutriments {
+            .inputBg {
+              width: 80%;
+              select {
+                font-size: 1.1rem;
+              }
+              input[type=search] {
+                &::placeholder {
+                  font-size: 1.3rem;
+                }
+              }
+            }
+            .flex {
+              width: 80%;
+              .toggle-span {
+                font-size: 11px;
+                padding: 0px;
+              }
+            }
+          }
+          label {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    }
+    .container {
+      padding: 15rem 7rem 5rem;
+      .modalcont {
+        padding: 5rem;
+        .modal1 {
+          .modalInfo {
+          }
+          .nScoreNova {
+            .nova {
+              width: min-content;
+            }
+            .nutrifacts {
+              flex: 1 1;
+              width: min-content;
+              .nutrition {
+                width: min-content;
+                flex-flow: column;
+              }
+            }
+          }
+        }
+      }
+      .paging {
+        li {
+          padding: 1rem;
+        }
+      }
+    }
+}
 
-
-
-
-
-
-
-
-
-
+@media only screen and (min-width: 800px) and (max-width: 999px) {
+  .search {
+    padding: 10rem 0 5rem;
+    form {
+      .inputBg {
+        width: 45%;
+      }
+      .advanced {
+        width: 60%;
+        .moreCriterias {
+          .CriteriasNutriments {
+            .inputBg {
+              width: 65%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .container {
+    .modalcont {
+      .nScoreNova {
+        .nova {
+          flex: 0;
+          padding-right: 2rem;
+        }
+        .nutrifacts {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1300px) {
+  .page {
+    padding: 20rem 20rem 7rem;
+  }
+  .navigation {
+    li {
+      padding: 2.5rem;
+    }
+  }
+  .search {
+    form {
+      .inputBg {
+        width: 45%;
+      }
+      .advanced {
+        width: 45%;
+      }
+    }
+  }
+  .container {
+    .modalcont {
+      .modal1 {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        h1 {
+          flex: 0;
+        }
+        & h2 {
+          flex: 0;
+          margin: 12rem 0rem 0rem -12rem;
+        }
+        .modalInfo {
+          flex: 3;
+          margin-left: 5rem;
+          h2 {
+            margin: 0;
+          }
+          div {
+            flex: 1 0;
+            padding-right: 1rem;
+            ul {
+              margin-bottom: 5rem;
+            }
+          }
+          picture {
+            margin: 0rem auto;
+            text-align: center;
+            flex: 1;
+          }
+        }
+        .nScoreNova {
+          flex: 2;
+          h2 {
+            margin: 0;
+          }
+          .nutrifacts {
+            width: min-content;
+            padding: 0;
+            .nutrition {
+              flex-flow: column wrap;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-
 @font-face {
   font-family: Montserrat-Bold;
   src: url("./fonts/montserrat/Montserrat-Bold.otf");
 }
-// @font-face {
-//   font-family: Montserrat-Italic;
-//   src: url("./fonts/montserrat/Montserrat-Italic.otf")
-// }
 @font-face {
   font-family: Montserrat-Light;
   src: url("./fonts/montserrat/Montserrat-Light.otf");
@@ -244,7 +485,6 @@ label {
   font-family: Montserrat-Medium;
   src: url("./fonts/montserrat/Montserrat-Medium.otf")
 }
-
 @font-face {
   font-family: Montserrat-SemiBold;
   src: url("./fonts/montserrat/Montserrat-SemiBold.otf")

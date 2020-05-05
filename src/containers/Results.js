@@ -74,7 +74,7 @@ class Results extends React.Component {
                                   <Spinner/>
             </h5>
 }
-        <div>
+       
           {this.props.staff.isModalOpen ? <Modal
             handleModalOpen={this.props.handleModalOpen}
             product={this.props.staff.modalPicture}
@@ -86,12 +86,12 @@ class Results extends React.Component {
           >
           </Modal>
             : null}
-        </div>
-        <div>
+        
+        
           <CreatePages allPages={this.props.staff.totalPages}
                        currentPage={this.state.currentPage}
                        handlePagination={this.handlePagination} />
-        </div>
+       
 
       </div>
     )

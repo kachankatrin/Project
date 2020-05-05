@@ -1,60 +1,60 @@
 .ragiogroup {
   margin: 0.5rem 0;
-.radioContainer {
-  position: relative;
-  padding: 0 2.5rem;
-  cursor: pointer;
-  input {
-    position: absolute;
-    opacity: 0;
+  .radioContainer {
+    position: relative;
+    padding: 0 2.5rem;
     cursor: pointer;
-    &:checked ~ .radio-bg {
-       .customRadio {
-        background-color: #d63447;
-        &:after {
-          display: block;
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      &:checked ~ .radio-bg {
+        .customRadio {
+          background-color: #d63447;
+          &:after {
+            display: block;
+          }
+        }
+      }
+      &:hover ~ .radio-bg {
+        .customRadio {
+          background-color: #d1cebd;
+          cursor: pointer; 
         }
       }
     }
-    &:hover ~ .radio-bg {
-      .customRadio {
-      background-color: #d1cebd;
-      cursor: pointer; 
-    }
-    }
-  }
-  .radio-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    background-color: white;
-    border-radius: 50%;
-  .customRadio {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(246, 238, 223, 0.7);
-    border-radius: 50%;
-    border: 1px solid #d1cebd;
-    &:after {
-      content: '';
+    .radio-bg {
       position: absolute;
-      display: none;
-      top: 4px;
-      left: 4px;
-      width: 6px;
-      height: 6px;
+      top: 0;
+      left: 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      background-color: white;
       border-radius: 50%;
-      background: #f6eedf;
+    .customRadio {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(246, 238, 223, 0.7);
+      border-radius: 50%;
+      border: 0.1rem solid #d1cebd;
+      &:after {
+        content: '';
+        position: absolute;
+        display: none;
+        top: 0.4rem;
+        left: 0.4rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50%;
+        background: #f6eedf;
+      }
     }
   }
-}
-  &:hover input:checked ~ .radio-bg{
-    .customRadio {
-    background-color: #d63447;
+    &:hover input:checked ~ .radio-bg{
+      .customRadio {
+        background-color: #d63447;
+      }
+    }
   }
-  }
-}
 }

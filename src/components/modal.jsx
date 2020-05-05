@@ -16,33 +16,52 @@ function Modal(props) {
         <div className='modalInfo flex'>
           <div className>
             <SmallInfo products={props.products} />
-            <Ingredients products={props.products} />
-          </div>
-          <img src={props.product && props.products.image_front_url} />
-        </div>
-        <div className='nScoreNova flex'>
-        <div className='nova'>
-          <h2>nova group</h2>
-          <img src={props.products.nova_group && nova_groups[props.products.nova_group][0]} />
-          <h4>{props.products.nova_group && nova_groups[props.products.nova_group][1]}</h4>
-        </div>  
-        <div className='nutrifacts'>
-            <h2>nutrition facts</h2>
-            <div className="nutrition flex">
-              <div>
-                <h4>NutriScore nutrition grade</h4>
-                <img src={props.products.nutriscore_grade && nutriscore[props.products.nutriscore_grade]} />
-              </div>
-              <div>
-                <h4>Nutrient levels for 100 g </h4>
-                <ul className="nutrilevels">
-                  {nutrimentLevelsKeys.map(item => <li><span className={'circle ' + props.products.nutrient_levels[item]}></span> {props.products.nutriments[item]} {props.products.nutriments[`${item}_unit`]} {item} in {props.products.nutrient_levels[item]} quantity </li>)}
-                </ul>
-              </div>
-            </div>
+            {props.products.ingredients_analysis_tags 
+              ? <Ingredients products={props.products} /> 
+              : null
+            }
           </div>
           
-          </div>
+          <picture>
+  <source media="(max-width: 450px)" srcset={props.products && props.products.image_front_url}/>
+  <source media="(max-width: 800px)" srcset={props.product && props.products.image_front_url}/>
+   <source media="(max-width: 1200px)" srcset={props.product && props.products.image_front_url}/>
+  <img src={props.product && props.products.image_front_url}/>
+</picture>
+        </div>
+        <div className='nScoreNova flex'>
+          {props.products.nova_group
+            ? <div className='nova'>
+              <h2>nova group</h2>
+              <img src={props.products.nova_group && nova_groups[props.products.nova_group][0]} />
+              <h4>{props.products.nova_group && nova_groups[props.products.nova_group][1]}</h4>
+            </div>
+            : null
+          }
+          {Object.keys(props.products.nutrient_levels).length || props.products.nutriscore_grade
+            ? <div className='nutrifacts'>
+              <h2>nutrition facts</h2>
+              <div className="nutrition flex">
+                {props.products.nutriscore_grade
+                  ? <div>
+                    <h4>NutriScore nutrition grade</h4>
+                    <img src={props.products.nutriscore_grade && nutriscore[props.products.nutriscore_grade]} />
+                  </div>
+                  : null
+                }
+                {Object.keys(props.products.nutrient_levels).length
+                  ? <div>
+                    <h4>Nutrient levels for 100 g </h4>
+                    <ul className="nutrilevels">
+                      {nutrimentLevelsKeys.map(item => <li><span className={'circle ' + props.products.nutrient_levels[item]}></span> {props.products.nutriments[item]} {props.products.nutriments[`${item}_unit`]} {item} in {props.products.nutrient_levels[item]} quantity </li>)}
+                    </ul>
+                  </div>
+                  : null}
+              </div>
+            </div>
+            : null}
+
+        </div>
       </div>
     </div>
   )

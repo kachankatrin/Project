@@ -20,12 +20,15 @@
   .modal1 {
     text-align: left;
     position: relative;
+    picture{
+      margin: 1rem auto;
+      text-align: center;
     img {
       object-fit: contain;
       align-self: start;
-      padding: 0.5rem 0;
       flex: 2;
     }
+  }
     h1 {
       color: #d63447;
       font-family: Montserrat-Bold;
@@ -39,6 +42,7 @@
     .modalInfo {
       div:first-child {
         flex: 2;
+        padding-right: 1rem;
         .infoName {
           color: #d63447;
           line-height: 1.6;
@@ -53,48 +57,51 @@
     }
     .nScoreNova {
       .nutrifacts {
-        flex: 2;
+        flex: 3;
+        padding: 0 3rem;
         .nutrition {
           flex: 1;
           div:first-child {
             flex: 3;
           }
           div:last-child {
-            flex: 4;
-          .nutrilevels {
-            li {
-              position: relative;
-              padding: 0rem 3rem;
-              line-height: 1.6;
-              font-family: Montserrat-Light;
-              .circle {
-                height: 20px;
-                width: 20px;
-                border-radius: 30px;
-                position: absolute;
-                left: 0%;
-              }
-              .low {
-                background-color: green;
-              }
-              .high {
-                background-color: red;
-              }
-              .moderate {
-                background-color: orange
+            flex: 3;
+            .nutrilevels {
+              li {
+                position: relative;
+                padding-left: 3rem;
+                line-height: 1.6;
+                font-family: Montserrat-Light;
+                .circle {
+                  height: 20px;
+                  width: 20px;
+                  border-radius: 30px;
+                  position: absolute;
+                  left: 0%;
+                }
+                .low {
+                  background-color: green;
+                }
+                .high {
+                  background-color: red;
+                }
+                .moderate {
+                  background-color: orange
+                }
               }
             }
           }
         }
-        }
-      
       }
       .nova {
         flex: 1;
+        h2 {
+          width: min-content;
+        }
+        h4 {
+          width: min-content;
+        }
       }
     }
   }
 }
-
-
-

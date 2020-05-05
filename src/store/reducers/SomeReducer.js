@@ -28,7 +28,7 @@ export const initStore = {
   productsForModal: null,
   isMoreCriteriasOpen: false,
   loading: false,
-  text: ''
+  text: 'Enter valid search query'
 }
 
 export const actionReducer = (initialState=initStore, action) => {
