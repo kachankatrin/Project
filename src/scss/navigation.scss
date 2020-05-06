@@ -1,31 +1,52 @@
-.navigation {
+.menu-navigation {
   background-color: #d63447;
-  position: fixed;
-  z-index: 150;
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    justify-content: space-evenly;
-    li {
-      padding: 1.5rem;
-      &:active {
-        transform: scale(0.8)
-      }
+    height: 5.4rem;
+  .sandwitch-menu {
+    display: none;
+    height: 4rem;
+    width: 4rem;
+    position: absolute;
+    top: 0.5rem;
+    right: 1%;
+    .fas {
+      position: absolute;
+      z-index: 500;
       &:hover {
-        text-decoration: underline;
-        transform: scale(1.1);
-      }
-    }
-  .toggleNavi {
-    &:before{
-      background-color: #f6eedf;
-    }
-    &:checked {
-      background-color: #d1cebd;
-      &:before {
-        border: 0.5px solid #f6eedf;
+        transform: scale(1.3);
+        cursor: pointer;
       }
     }
   }
+    .navigation {
+    background-color: #d63447;
+    position: fixed;
+    z-index: 150;
+      display: flex;
+      width: 100%;
+      margin: 0 auto;
+      justify-content: space-evenly;
+      
+      li {
+        padding: 1.5rem;
+        &:hover {
+          text-decoration: underline;
+          transform: scale(1.1); 
+          &:active {
+            transform: scale(0.9);
+          }
+        }  
+      }
+    .toggleNavi {
+      &:before{
+        background-color: #f6eedf;
+      }
+      &:checked {
+        background-color: #d1cebd;
+        &:before {
+          border: 0.5px solid #f6eedf;
+        }
+      }
+    }
 
+  }
 }

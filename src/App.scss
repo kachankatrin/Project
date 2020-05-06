@@ -19,6 +19,14 @@ html {
 }
 body {
   font-size: 1.6rem;
+  .fas {
+    font-size: 3rem;
+        padding: 0.5rem;
+        color: #f57a51;
+  }
+}
+.display {
+  display: flex !important;
 }
 .page {
   padding: 10rem 10rem 5rem;
@@ -103,22 +111,32 @@ label {
 }
 
 .active {
-  background-color: #f57b51;
+  // background-color: #f57b51;
+  // color: #f6eedf;
+  // font-family: Montserrat-Bold;
   color: #f6eedf;
+  padding: 0.2rem;
   font-family: Montserrat-Bold;
+  border-top: 0.5rem solid#f57a51;
 }
 
 @media only screen and (min-width: 300px) and (max-width: 459px) {
   html {
     font-size: 8px;
   }
-  .navigation {
-    padding-left: 3rem;
-    flex-flow: column;
-    .check {
-      align-self: start;
+  .menu-navigation {
+    .sandwitch-menu {
+      display: block;
     }
-  }
+    .navigation {
+      display: none;
+      padding-left: 3rem;
+      flex-flow: column;
+      .check {
+        align-self: start;
+      }
+    }
+  } 
   .search {
     h3 {
       font-size: 1.7rem;
@@ -166,7 +184,7 @@ label {
 }
 @media only screen and (max-width: 599px) {
   .page {
-    padding: 15rem 0 5rem;
+    padding: 10rem 0 5rem;
   }
   button{ 
     line-height: 1.3;
@@ -208,7 +226,7 @@ label {
     }
   }
   .container {
-    padding: 15rem 7rem 5rem;
+    padding: 10rem 7rem 5rem;
     h1:first-child {
       text-align: center;
     }
@@ -295,7 +313,7 @@ label {
     font-size: 9px;
   }
   .page {
-    padding: 15rem 0 5rem;
+    padding: 10rem 0 5rem;
   }
   .search {
     form {
@@ -333,7 +351,7 @@ label {
     }
     }
     .container {
-      padding: 15rem 7rem 5rem;
+      padding: 10rem 7rem 5rem;
       .modalcont {
         padding: 5rem;
         .modal1 {

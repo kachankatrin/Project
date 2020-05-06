@@ -1,4 +1,4 @@
-import {DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS} from '../actions/SomeAction';
+import {DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS, OPEN_MENU} from '../actions/SomeAction';
 
 export const initStore = {
   products: [],
@@ -28,7 +28,11 @@ export const initStore = {
   productsForModal: null,
   isMoreCriteriasOpen: false,
   loading: false,
-  text: 'Enter valid search query'
+  text: 'Enter valid search query',
+  // isMenuOpen: false
+}
+const naviStore = {
+  isMenuOpen: false
 }
 
 export const actionReducer = (initialState=initStore, action) => {
@@ -91,6 +95,12 @@ export const actionReducer = (initialState=initStore, action) => {
       isModalOpen: !initialState.isModalOpen
     }
   }
+  // if(action.type === OPEN_MENU) {
+  //   return {
+  //     ...initialState,
+  //     isMenuOpen: !initialState.isMenuOpen
+  //   }
+  // }
   if(action.type === OPEN_CRITERIAS) {
     return {
       ...initialState,
@@ -112,6 +122,16 @@ export const actionReducer = (initialState=initStore, action) => {
       ...initialState,
       modalPicture: modalObj.product_name,
       productsForModal: modalObj
+    }
+  }
+  return initialState
+}
+
+export const naviReducer = (initialState=naviStore, action) => {
+  if(action.type === OPEN_MENU) {
+    return {
+      ...initialState,
+      isMenuOpen: !initialState.isMenuOpen
     }
   }
   return initialState

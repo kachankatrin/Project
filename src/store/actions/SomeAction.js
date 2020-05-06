@@ -9,7 +9,8 @@ export const OPEN_MODAL = 'OPEN_MODAL';
 export const DARK_MODE = 'DARK_MODE';
 export const SELECT_MODAL = 'SELECT_MODAL';
 export const OPEN_CRITERIAS = 'OPEN_CRITERIAS';
-export const CHANGE_LOADER_STATUS = 'CHANGE_LOADER_STATUS'
+export const CHANGE_LOADER_STATUS = 'CHANGE_LOADER_STATUS';
+export const OPEN_MENU = 'OPEN_MENU';
 
 export const fetchOOF = (search, page, tagtype, tagContains, tag, tagtype1, tagContains1, tag1, additives, ingPalmOil, ingMayBePalmOil, ingPalmOilORMayBePalmOil, nutriment, comparement, nutrimentValue,  energyUnit, nutriment1, comparement1, nutrimentValue1,  energyUnit1) => {
   const searchCritiria = `${search}&page=${page}&tagtype_0=${tagtype}&tag_contains_0=${tagContains}&tag_0=${tag}&tagtype_1=${tagtype1}&tag_contains_1=${tagContains1}&tag_1=${tag1}&additives=${additives}&ingredients_from_palm_oil=${ingPalmOil}&ingredients_that_may_be_from_palm_oil=${ingMayBePalmOil}&ingredients_from_or_that_may_be_from_palm_oil=${ingPalmOilORMayBePalmOil}&nutriment_0=${nutriment}&nutriment_energy_unit_0=${energyUnit}&nutriment_compare_0=${comparement}&nutriment_value_0=${nutrimentValue}&nutriment_1=${nutriment1}&nutriment_energy_unit_1=${energyUnit1}&nutriment_compare_1=${comparement1}&nutriment_value_1=${nutrimentValue1}`
@@ -89,13 +90,16 @@ export const handleDarkMode =() => {
     type: DARK_MODE
   }
 }
+export const handleMenuOpen = (e) => {
+  return {
+    type: OPEN_MENU
+  }
+}
 
 export const handleSelectModalProduct = (e) => {
   
   console.log(e, 'aaaaaaaaaaaaaaasssfgdfdgfdgdgfdgfdhgfdhfdhgffghfdgfdgfbfvhgfbcdbxgxgvxf')
-  // e.stopPropagation()
   e.persist()
-  // e.stopPropagation()
   return {
     type: SELECT_MODAL,
     payload: {value: e.currentTarget.textContent, id: e.currentTarget.id}

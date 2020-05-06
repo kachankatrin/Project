@@ -9,7 +9,10 @@ function Modal(props) {
   const nutrimentLevelsKeys = Object.keys(props.products.nutrient_levels)
   console.log(nutrimentLevelsKeys, props.products.nutrient_levels)
   return (
-    <div className={'modalcont ' + props.className} onClick={props.handleModalOpen}>
+    <div className={'modalcont ' + props.className}>
+    <div className='close-modal'>
+      <i className="fas fa-times" onClick={props.handleModalOpen} ></i>
+    </div>
       <div className="modal1">
         <h1>{props.product}</h1>
         <h2>all about product</h2>
