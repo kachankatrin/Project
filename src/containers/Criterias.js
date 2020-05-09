@@ -13,6 +13,8 @@ class SearchCriterias extends React.Component {
   state = {
   }
   render() {
+    console.log(React.Children, 'childrennnnnnnnnnnnnnnnnnnnnnnnnn')
+
     console.log(window.document.links)
     console.log(window.location.pathname)
     const darkClass = this.props.staff.isDarkMode ? 'dark' : ''

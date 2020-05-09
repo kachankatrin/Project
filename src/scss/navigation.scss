@@ -28,6 +28,7 @@
       
       li {
         padding: 1.5rem;
+        width: max-content;
         &:hover {
           text-decoration: underline;
           transform: scale(1.1); 

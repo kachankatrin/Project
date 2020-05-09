@@ -3,6 +3,12 @@
     font-family: Montserrat-Bold;
     color: #d63447;
   }
+  .btnmy {
+    background-color: inherit;
+    .fas {
+      color: #d63447;
+    }
+  }
   .loader { 
     border: 0.8rem solid #d1cebd;
     margin: auto;

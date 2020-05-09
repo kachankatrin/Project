@@ -1,4 +1,4 @@
-import {DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS, OPEN_MENU} from '../actions/SomeAction';
+import {DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS, OPEN_MENU, ADD_PRODUCT, REMOVE_PRODUCT, CHANGE_ACTIVE_INDEX, CLICK_PREVIOUS, GET_PREV_INFO, FAVOTITES_LOADED, SELECT_FAV_MODAL, OPEN_FAV_MODAL, CLICK_NEXT} from '../actions/SomeAction';
 
 export const initStore = {
   products: [],
@@ -113,6 +113,7 @@ export const actionReducer = (initialState=initStore, action) => {
       isDarkMode: !initialState.isDarkMode
     }
   }
+
   if(action.type === SELECT_MODAL) {
 
     console.log(action.payload, action.type)
@@ -132,6 +133,107 @@ export const naviReducer = (initialState=naviStore, action) => {
     return {
       ...initialState,
       isMenuOpen: !initialState.isMenuOpen
+    }
+  }
+  return initialState
+}
+
+
+
+const favStore = {
+  favoriteProducts: [],
+  activeIndex: null,
+  productsForModal: null,
+  Carousel: null,
+  modalPicture: '',
+  isFavModalOpen: false
+}
+export const productReducer = (initialState = favStore, action) => {
+  console.log("INITIAL", [...initialState.favoriteProducts])
+
+      // Carousel: initialState.favoriteProducts.map((item, index) => {
+      //   let obj ={};
+      //   obj[index] = item;
+      //   return [].push(obj)}).map((item,index) => item[index])
+
+      let newProductsArr = [];
+      initialState.favoriteProducts.map((item, index) => {
+        let obj ={};
+        obj[index] = item;
+        return newProductsArr.push(obj)})
+  if(action.type === ADD_PRODUCT) {
+    return {
+      ...initialState,
+      favoriteProducts: [...initialState.favoriteProducts, action.payload]
+    }
+  }
+  if(action.type === REMOVE_PRODUCT) {
+    console.log(action.payload, 'acPayl')
+    console.log(action.payload)
+    return {
+      favoriteProducts: initialState.favoriteProducts.filter((item) => {
+      console.log(initialState.favoriteProducts, 'isFavProductINNNNNNN')
+      return item.id !== action.payload})
+    }
+  }
+  if(action.type === CHANGE_ACTIVE_INDEX) {
+    return {
+      ...initialState, 
+      activeIndex: action.payload
+    }
+  }
+  if(action.type === CLICK_PREVIOUS) {
+    return {
+      ...initialState,
+      activeIndex: initialState.activeIndex > 0 ? initialState.activeIndex - action.payload.true :  action.payload.false,
+      // Carousel: newProductsArr.map((item,index) => item[index])
+    }
+  }
+  if(action.type === CLICK_NEXT) {
+    return {
+      ...initialState,
+      activeIndex:initialState.activeIndex < initialState.Carousel.length - 1 ? initialState.activeIndex + action.payload.true : action.payload.false
+
+    }
+  }
+  if(action.type === GET_PREV_INFO) {
+    console.log("FFFFFFF", initialState.activeIndex)
+    console.log(initialState.Carousel)
+    console.log(initialState.Carousel[initialState.activeIndex])
+    // const modalObj = initialState.Carousel.filter((item, index) => index === initialState.activeIndex)
+    // initialState.Carousel.filter((item, index) => {console.log(index === initialState.activeIndex); return index === initialState.activeIndex})
+    return {
+      ...initialState,
+      // Carousel: newProductsArr.map((item,index) => item[index]),
+      productsForModal: initialState.Carousel[initialState.activeIndex], //.filter((item, index) => index === initialState.activeIndex),
+      modalPicture: initialState.Carousel.filter((item, index) => index === initialState.activeIndex)[0].product_name
+
+      
+
+    }
+  }
+  if(action.type === FAVOTITES_LOADED) {
+    // console.log(newProductsArr)
+    return {
+      ...initialState,
+      Carousel: newProductsArr.map((item,index) => item[index])
+
+    }
+  }
+  if(action.type === SELECT_FAV_MODAL) {
+    console.log(action.payload, action.type)
+    const modalObj = initialState.Carousel.filter(item => item.id === action.payload.id)[0]
+    console.log(modalObj, initialState)
+    return {
+      ...initialState,
+      modalPicture: modalObj.product_name,
+      productsForModal: modalObj
+    }
+  }
+  if(action.type === OPEN_FAV_MODAL) {
+    return {
+      ...initialState,
+      isFavModalOpen: !initialState.isFavModalOpen
     }
   }
   return initialState

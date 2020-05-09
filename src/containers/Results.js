@@ -1,7 +1,8 @@
 import React from 'react';
 import CreatePages from '../components/pages';
-import { fetchOOF, handleModalOpen, handleDarkMode, handleSelectModalProduct } from '../store/actions/SomeAction';
+import { fetchOOF, handleModalOpen, handleDarkMode, handleSelectModalProduct, addProduct, removeProduct } from '../store/actions/SomeAction';
 import { connect } from 'react-redux';
+// import {handleProductClick} from '../utils'
 import Spinner from "../components/Spinner";
 import '../App.scss';
 import Modal from '../components/modal';
@@ -12,7 +13,6 @@ class Results extends React.Component {
   }
   handlePagination = (item) => {
     console.log(this.state.currentPage)
-    console.log("HP")
     this.setState({
       currentPage: item
     })
@@ -20,11 +20,10 @@ class Results extends React.Component {
     console.log(this.props.staff.products, 'search')
     this.props.fetchOOF(this.props.staff.search, item, this.props.staff.tagtype, this.props.staff.tagContains, this.props.staff.tag, this.props.staff.tagtype1, this.props.staff.tagContains1, this.props.staff.tag1, this.props.additives, this.props.staff.ingPalmOil, this.props.staff.ingMayBePalmOil, this.props.staff.ingPalmOilORMayBePalmOil, this.props.staff.nutriment, this.props.staff.comparement, this.props.staff.nutrimentValue, this.props.staff.energyUnit, this.props.staff.nutriment1, this.props.staff.comparement1, this.props.staff.nutrimentValue1, this.props.staff.energyUnit1)
   }
-  handleProductClick = (product) => {
+    handleProductClick = (product) => {
     console.log(product)
     this.props.handleModalOpen()
     this.props.handleSelectModalProduct(product)
-    // product.stopPropagation()
   }
   componentDidMount() {
     console.log('mount')
@@ -47,11 +46,17 @@ class Results extends React.Component {
   //   // })
   //   // handleLoader()
   // }
+  
   render() {
     console.log(window.location.pathname)
+    React.Children.map(this.props.children, child => {console.log(child, 'childjsklsjfglkjsfghkjshgkjhsjghdjghsghdgkdjghdoihoighkghdgkhdghdk'); return child})
+
     console.log('render', this.props.staff.loading, 'prod', this.props.staff.products)
     const darkClass = this.props.staff.isDarkMode ? 'dark' : '';
     const darkModal = this.props.staff.isDarkMode ? 'darkModal' : '';
+    const style = {
+      display: 'none'
+    }
     // if(this.props.staff.loading === true && !this.props.staff.products.length){
     //   this.props.handleLoader()
     // } 
@@ -64,34 +69,51 @@ class Results extends React.Component {
           ?
           // renderCharacters(this.state.characters)
           (this.props.staff.products.length
-                              ?
-                                <Product className='gridContainer1' products={this.props.staff.products}
-                                handleProductClick={this.handleProductClick}
-                              />       
-                              : <h5 className="load">No products</h5>
+            ? <ul className='gridContainer1'>
+              {this.props.staff.products.map(item =>
+                <Product item={item}
+                  handleProductClick={this.handleProductClick}
+                  addProduct={this.props.addProduct}
+                  removeProduct={this.props.removeProduct}
+                  products={item}
+                  isFavoriteProduct={this.props.product.favoriteProducts.find(product => {
+                  console.log(product)   
+                    return item.id === product.id
+                  }
+                    // return item.id === product.id
+                  )}
+                // isFavoriteProduct={this.props.product.favoriteProducts}
+                />)}</ul>
+            : <h5 className="load">No products</h5>
           )
           : <h5 className="load">
-                                  <Spinner/>
-            </h5>
-}
-       
-          {this.props.staff.isModalOpen ? <Modal
+            <Spinner />
+          </h5>
+        }
+
+        {this.props.staff.isModalOpen ?
+
+          <Modal
+            // isFavoriteProduct={this.props.product.favoriteProducts.find(product => item.id === product.id)}
+            // addProduct={this.props.addProduct}
+            // removeProduct={this.props.removeProduct}
             handleModalOpen={this.props.handleModalOpen}
             product={this.props.staff.modalPicture}
+            style={style}
             //  picture={{src:this.props.staff.productsForModal.image_front_url}}
             products={this.props.staff.productsForModal}
             //  quantity={this.props.staff.productsForModal.quantity}
             // packaging={this.props.staff.productsForModal.packaging_tags}
             className={darkModal}
-          >
-          </Modal>
-            : null}
-        
-        
-          <CreatePages allPages={this.props.staff.totalPages}
-                       currentPage={this.state.currentPage}
-                       handlePagination={this.handlePagination} />
-       
+          />
+
+          : null}
+
+
+        <CreatePages allPages={this.props.staff.totalPages}
+          currentPage={this.state.currentPage}
+          handlePagination={this.handlePagination} />
+
 
       </div>
     )
@@ -99,7 +121,8 @@ class Results extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    staff: state.staff
+    staff: state.staff,
+    product: state.product
   }
 }
 const mapDispatchToProps = {
@@ -107,6 +130,8 @@ const mapDispatchToProps = {
   handleModalOpen,
   handleDarkMode,
   handleSelectModalProduct,
+  addProduct,
+  removeProduct
   // handleLoader
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Results);

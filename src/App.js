@@ -3,7 +3,8 @@ import {Route, Switch,Link, NavLink} from 'react-router-dom';
 import SearchCriterias from './containers/Criterias';
 // import Main from './containers/Main';
 import { connect } from 'react-redux';
-import Results from './containers/Results'
+import Results from './containers/Results';
+import Favorites from './containers/Favorites'
 import Nav from './components/Nav';
 import './App.scss';
 import {handleClearState, handleDarkMode, handleMenuOpen} from './store/actions/SomeAction';
@@ -18,6 +19,7 @@ class App extends React.Component {
         <NavLink activeClassName="active"        
         to='/search' className='naviItem'  onClick={() => this.props.handleClearState(initStore)}>Search Criterias</NavLink>
         <NavLink activeClassName="active" className='naviItem' to='/results'>Results</NavLink>
+        <NavLink activeClassName="active" className='naviItem' to='/favorites'>Favorites</NavLink>
         <div>
             <input type="checkbox" onChange={this.props.handleDarkMode} className="toggle toggleNavi"></input>
             <label htmlFor='toggle'><span className="naviItem">Change Mode</span></label>
@@ -29,6 +31,9 @@ class App extends React.Component {
       }></Route>
       <Route path='/results' component={() => 
         <Results/>
+      }></Route>
+      <Route path='/favorites' component={() => 
+        <Favorites/>
       }></Route>
       
       </Switch>

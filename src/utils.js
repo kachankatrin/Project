@@ -1,5 +1,6 @@
+// import {handleModalOpen, handleSelectModalProduct} from './store/actions/SomeAction';
 export const api = `https://world.openfoodfacts.org/cgi/search.pl?search_simple=1&json=true&action=process&sort_by=unique_scans_n&page_size=20&search_terms=`
-export const api1 = `https://world.openfoodfacts.org/cgi/search.pl?`;
+// export const api1 = `https://world.openfoodfacts.org/cgi/search.pl?`;
 export const criterion = [
   { '': 'choose a criterion' },
   { 'brands': 'brands' },
@@ -62,3 +63,10 @@ export const RemoveUnderscore = (str) => {
   const cleanedStr = str.split('_').join(' ');
   return Capitalize(cleanedStr)
 }
+
+
+// export function  handleProductClick(product){
+//   console.log(product)
+//   handleModalOpen()
+//   handleSelectModalProduct(product)
+// }
