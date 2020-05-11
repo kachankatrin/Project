@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 import Product from '../components/Listitem';
 import Modal from '../components/modal'
-import {removeProduct, addProduct, handleModalFavOpen, handleSelectFavoriteProduct, changeActiveIndex, handleNext, handlePrevious, getPreviousInfo, handleCarousel} from '../store/actions/SomeAction'
+import {removeProduct, addProduct, handleModalFavOpen, handleSelectFavoriteProduct, changeActiveIndex, handleNext, handlePrevious, getPreviousInfo, handleCarousel} from '../store/actions/Actions'
 
 function Favorites(props) {
   useEffect(() => {
@@ -23,8 +23,8 @@ function Favorites(props) {
     props.changeActiveIndex(index)
     // props.handleCarousel()
   }
-  const darkClass = props.staff.isDarkMode ? 'dark' : '';
-  const darkModal = props.staff.isDarkMode ? 'darkModal' : '';
+  const darkClass = props.mainState.isDarkMode ? 'dark' : '';
+  const darkModal = props.mainState.isDarkMode ? 'darkModal' : '';
   const style = {
     display: 'block'
   }
@@ -61,7 +61,7 @@ function Favorites(props) {
           handlePrevious={() => {props.handlePrevious(props.Carousel); props.getPreviousInfo()}}
           handleNext={() => {props.handleNext(props.Carousel); props.getPreviousInfo()}}
           handleModalOpen={props.handleModalFavOpen}
-          product={props.modalPicture}
+          product={props.modalProductName}
           products={props.productsForModal}
           className={darkModal}
         />
@@ -74,11 +74,11 @@ function Favorites(props) {
 const mapStateToProps = (state)=> {
   return {
     favoriteProducts: state.product.favoriteProducts,
-    staff: state.staff,
+    mainState: state.mainState,
     activeIndex: state.product.activeIndex,
     Carousel: state.product.Carousel,
     productsForModal: state.product.productsForModal,
-    modalPicture: state.product.modalPicture,
+    modalProductName: state.product.modalProductName,
     isFavModalOpen: state.product.isFavModalOpen
   }
 }

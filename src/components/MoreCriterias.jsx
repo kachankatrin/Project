@@ -1,13 +1,13 @@
 import React from 'react';
 import { criterion, nutriments, comparements, RemoveUnderscore } from '../utils';
-import Select from '../components/SelectComponent';
-import Toggle from '../components/ToggleComponent';
-import RadioButtons from '../components/RadioButtonsGroup'
+import Select from './SelectComponent';
+import Toggle from './ToggleComponent';
+import RadioButtons from './RadioButtonsGroup'
 function MoreCriterias(props) {
-  const { search: { tagtype, tagContains, tagContains1, tag, tagtype1, tag1, additives, ingPalmOil, ingMayBePalmOil, ingPalmOilORMayBePalmOil, nutriment, comparement, nutrimentValue, nutriment1, comparement1, nutrimentValue1 }, darkClass } = props
+  const { search: { tagtype, tagContains, tagContains1, tag, tagtype1, tag1, additives, ingPalmOil, ingMayBePalmOil, ingPalmOilORMayBePalmOil, nutriment, comparement, nutrimentValue, nutriment1, comparement1, nutrimentValue1 }, darkClass } = props;
   return (
-    <div className='moreCriterias'>
-      <div className="CriteriasNutriments">
+    <div className='more-criterias'>
+      <div className="criterias-nutriments">
         <div>
           <h2>Criterion</h2>
           <div className={'inputBg select-margin ' + darkClass}>
@@ -15,7 +15,7 @@ function MoreCriterias(props) {
           </div>
           <Toggle label={RemoveUnderscore(tagContains)} handleChange={(e) => props.handleToggle(e, 'tagContains')} />
           <div className={'inputBg ' + darkClass}>
-            <input type='search' id="critiriaSearch1" onChange={(e) => props.handleInput(e, 'tag')} value={tag} placeholder='value' />
+            <input type='search' id="CriteriaSearch1" onChange={(e) => props.handleInput(e, 'tag')} value={tag} placeholder='value' />
           </div>
           <div className={'inputBg select-margin ' + darkClass}>
             <Select value={tagtype1}
@@ -25,7 +25,7 @@ function MoreCriterias(props) {
           </div>
           <Toggle label={RemoveUnderscore(tagContains1)} handleChange={(e) => props.handleToggle(e, 'tagContains1')} />
           <div className={'inputBg ' + darkClass}>
-            <input type='search' id="critiriaSearch2" onChange={(e) => props.handleInput(e, 'tag1')} value={tag1} placeholder='value' />
+            <input type='search' id="CriteriaSearch2" onChange={(e) => props.handleInput(e, 'tag1')} value={tag1} placeholder='value' />
           </div>
         </div>
         <div className='nutriments'>
@@ -80,4 +80,4 @@ function MoreCriterias(props) {
     </div>
   )
 }
-export default MoreCriterias
+export default MoreCriterias;

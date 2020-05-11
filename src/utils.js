@@ -1,6 +1,4 @@
-// import {handleModalOpen, handleSelectModalProduct} from './store/actions/SomeAction';
 export const api = `https://world.openfoodfacts.org/cgi/search.pl?search_simple=1&json=true&action=process&sort_by=unique_scans_n&page_size=20&search_terms=`
-// export const api1 = `https://world.openfoodfacts.org/cgi/search.pl?`;
 export const criterion = [
   { '': 'choose a criterion' },
   { 'brands': 'brands' },
@@ -25,20 +23,20 @@ export const criterion = [
   { 'states': 'states' }
 ]
 export const nutriments = [
-  { '': 'choose a nutriment'},
-  {'energy': 'Energy','kJ': ' (kJ)'},
-  {'energy': 'Energy', 'kcal': ' (kcal)'},
-  {'energy': 'Energy'},
-  {'fat': 'Fat'}
+  { '': 'choose a nutriment' },
+  { 'energy': 'Energy', 'kJ': ' (kJ)' },
+  { 'energy': 'Energy', 'kcal': ' (kcal)' },
+  { 'energy': 'Energy' },
+  { 'fat': 'Fat' }
 ]
 
 export const comparements = [
-  {'': '...'},
-  {'lt': '<'},
-  {'lte': '<='},
-  {'gt': '>'},
-  {'gte': '>='},
-  {'eq': '='}
+  { '': '...' },
+  { 'lt': '<' },
+  { 'lte': '<=' },
+  { 'gt': '>' },
+  { 'gte': '>=' },
+  { 'eq': '=' }
 ]
 export const nova_groups = {
   1: ['img/nova-group-1.png', '1 - Unprocessed or minimally processed foods'],
@@ -56,17 +54,10 @@ export const nutriscore = {
 }
 
 export const Capitalize = (str) => {
-return str &&`${str[0].toUpperCase()}${str.slice(1)}`
+  return str && `${str[0].toUpperCase()}${str.slice(1)}`
 }
 
 export const RemoveUnderscore = (str) => {
   const cleanedStr = str.split('_').join(' ');
   return Capitalize(cleanedStr)
 }
-
-
-// export function  handleProductClick(product){
-//   console.log(product)
-//   handleModalOpen()
-//   handleSelectModalProduct(product)
-// }

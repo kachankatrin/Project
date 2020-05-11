@@ -1,5 +1,4 @@
 import { api } from '../../utils'
-// import MoreCriterias from '../../components/moreCriterias';
 export const DATA_LOADED = 'DATA LOADED';
 export const CHANGE_SEARCH = 'CHANGE_SEARCH';
 export const CHANGE_SELECT = 'CHANGE_SELECT';
@@ -24,12 +23,11 @@ export const OPEN_FAV_MODAL = 'OPEN_FAV_MODAL';
 export const CLICK_NEXT = 'CLICK_NEXT'
 
 export const fetchOOF = (search, page, tagtype, tagContains, tag, tagtype1, tagContains1, tag1, additives, ingPalmOil, ingMayBePalmOil, ingPalmOilORMayBePalmOil, nutriment, comparement, nutrimentValue, energyUnit, nutriment1, comparement1, nutrimentValue1, energyUnit1) => {
-  const searchCritiria = `${search}&page=${page}&tagtype_0=${tagtype}&tag_contains_0=${tagContains}&tag_0=${tag}&tagtype_1=${tagtype1}&tag_contains_1=${tagContains1}&tag_1=${tag1}&additives=${additives}&ingredients_from_palm_oil=${ingPalmOil}&ingredients_that_may_be_from_palm_oil=${ingMayBePalmOil}&ingredients_from_or_that_may_be_from_palm_oil=${ingPalmOilORMayBePalmOil}&nutriment_0=${nutriment}&nutriment_energy_unit_0=${energyUnit}&nutriment_compare_0=${comparement}&nutriment_value_0=${nutrimentValue}&nutriment_1=${nutriment1}&nutriment_energy_unit_1=${energyUnit1}&nutriment_compare_1=${comparement1}&nutriment_value_1=${nutrimentValue1}`
-  // const query = search ? `${search}&page=${page}&tagtype_0=${tagtype}&tag_contains_0=${tagContains}&tag_0=${tag}` : '';
+  const searchCriteria = `${search}&page=${page}&tagtype_0=${tagtype}&tag_contains_0=${tagContains}&tag_0=${tag}&tagtype_1=${tagtype1}&tag_contains_1=${tagContains1}&tag_1=${tag1}&additives=${additives}&ingredients_from_palm_oil=${ingPalmOil}&ingredients_that_may_be_from_palm_oil=${ingMayBePalmOil}&ingredients_from_or_that_may_be_from_palm_oil=${ingPalmOilORMayBePalmOil}&nutriment_0=${nutriment}&nutriment_energy_unit_0=${energyUnit}&nutriment_compare_0=${comparement}&nutriment_value_0=${nutrimentValue}&nutriment_1=${nutriment1}&nutriment_energy_unit_1=${energyUnit1}&nutriment_compare_1=${comparement1}&nutriment_value_1=${nutrimentValue1}`
   return async (dispatch) => {
     dispatch({ type: CHANGE_LOADER_STATUS, payload: { show: true, text: 'Loading...' } })
-    console.log("HERE OOF", api, searchCritiria)
-    const data = await fetch(`${api}${searchCritiria}`, {
+    console.log("HERE OOF", api, searchCriteria)
+    const data = await fetch(`${api}${searchCriteria}`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -39,18 +37,12 @@ export const fetchOOF = (search, page, tagtype, tagContains, tag, tagtype1, tagC
       redirect: 'follow'
     })
     console.log(data)
-
     const json = await data.json();
     const res = await dispatch({ type: DATA_LOADED, payload: json })
     dispatch({ type: CHANGE_LOADER_STATUS, payload: { show: false } })
     console.log(res)
   }
 }
-// export const handleLoader = (e) =>{
-//   return {
-//     type: CHANGE_LOADER_STATUS
-//   }
-// }
 export const handleInput = (e, key) => {
   console.log(CHANGE_SEARCH, e.target)
   return {
@@ -66,7 +58,6 @@ export const handleSelect = (e, key, key1) => {
   }
 }
 export const handleToggle = (e, key) => {
-
   return {
     type: CHANGE_TOGGLE,
     payload: { target: e.target, key }
@@ -97,7 +88,7 @@ export const handleModalFavOpen = (e) => {
   }
 }
 
-export const handleMoreCriteriasOpen = (e) => {
+export const handlemoreCriteriasOpen = (e) => {
   return {
     type: OPEN_CRITERIAS
   }
@@ -115,7 +106,6 @@ export const handleMenuOpen = (e) => {
 }
 
 export const handleSelectModalProduct = (e) => {
-
   console.log(e, 'aaaaaaaaaaaaaaasssfgdfdgfdgdgfdgfdhgfdhfdhgffghfdgfdgfbfvhgfbcdbxgxgvxf')
   e.persist()
   return {
@@ -124,7 +114,6 @@ export const handleSelectModalProduct = (e) => {
   }
 }
 export const handleSelectFavoriteProduct = (e) => {
-
   console.log(e, 'aaaaaaaaaaaaaaasssfgdfdgfdgdgfdgfdhgfdhfdhgffghfdgfdgfbfvhgfbcdbxgxgvxf')
   e.persist()
   return {
@@ -136,15 +125,11 @@ export const handleSelectFavoriteProduct = (e) => {
 export const getPreviousInfo = () => {
   return {
     type: GET_PREV_INFO,
-
   }
 }
 
-
-
-
 export function addProduct(product) {
-  console.log("ADD_CHARACTER", product)
+  console.log("ADD_PRODUCT", product)
   return {
     type: ADD_PRODUCT,
     payload: product
@@ -161,7 +146,6 @@ export function removeProduct(product) {
 
 export const changeActiveIndex = (key) => {
   console.log(key)
-  // e.stopPropagation()
   return {
     type: CHANGE_ACTIVE_INDEX,
     payload: key
@@ -180,7 +164,7 @@ export const handlePrevious = (arr) => {
 export const handleNext = (arr) => {
   return {
     type: CLICK_NEXT,
-    payload: {true: 1, false: 0}
+    payload: { true: 1, false: 0 }
   }
 }
 export const handleCarousel = () => {
@@ -188,13 +172,3 @@ export const handleCarousel = () => {
     type: FAVOTITES_LOADED
   }
 }
-
-
-// handlePrevious = (e) => {
-//   console.log(this.state.modalPicture, 'modal')
-//   this.setState({
-//     modalPicture: (this.state.modalPicture.id > 1) ? {id: this.state.modalPicture.id - 1} : {id: this.state.modalPicture.id = this.state.pictures.length}
-//   })
-//   e.stopPropagation()
-//   console.log(this.state.modalPicture.id, "new")
-// }

@@ -3,7 +3,7 @@
   flex-flow: row wrap;
   justify-content: space-between;
 }
-.modalcont {
+.modal-container {
   .close-modal {
     height: 4rem;
     width: 4rem;
@@ -20,6 +20,44 @@
         transform: scale(1.3);
         cursor: pointer;
       }
+    }
+  }
+  .button {
+    // position: sticky;
+    // top: 50%;
+    :hover {
+      cursor: pointer;
+      color: #d63447;
+    }
+    i {
+      font-size: 5rem;
+      position: absolute;
+    }
+    // background-color: transparent;
+    // border-radius: 30px;
+    // font-family: monospace;
+    // font-size: 20px;
+    // font-weight: 600;
+    // color: #3f00ffad;
+    // z-index: 1000;
+    
+  }
+  .prev {
+    left: 1%;
+    display: block;
+    position: sticky;
+    top: 50%;
+    i {
+      left: -8%;
+    }
+  }
+  .next {
+    right: 1%;
+    display: block;
+    position: sticky;
+    bottom: 50%;
+    i {
+      right: -8%;
     }
   }
   li {
@@ -61,7 +99,7 @@
       font-family: Montserrat-Medium;
       margin: 1rem 0rem;
     }
-    .modalInfo {
+    .modal-info {
       div:first-child {
         flex: 2;
         padding-right: 1rem;
@@ -77,7 +115,7 @@
         }
       }
     }
-    .nScoreNova {
+    .nutri-score-nova {
       .nutrifacts {
         flex: 3;
         padding: 0 3rem;

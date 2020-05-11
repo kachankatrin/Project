@@ -7,8 +7,8 @@ import Results from './containers/Results';
 import Favorites from './containers/Favorites'
 import Nav from './components/Nav';
 import './App.scss';
-import {handleClearState, handleDarkMode, handleMenuOpen} from './store/actions/SomeAction';
-import {initStore} from './store/reducers/SomeReducer'
+import {handleClearState, handleDarkMode, handleMenuOpen} from './store/actions/Actions';
+import {initStore} from './store/reducers/Reducers'
 
 class App extends React.Component {
     render() {

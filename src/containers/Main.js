@@ -1,12 +1,12 @@
 import React from 'react';
-import {handleDarkMode} from '../store/actions/SomeAction'
+import {handleDarkMode} from '../store/actions/Actions'
 import { connect } from 'react-redux';
 class Main extends React.Component {
   state = {
 
   }
   render() {
-    const darkClass = this.props.staff.isDarkMode ? 'dark' : ''
+    const darkClass = this.props.mainState.isDarkMode ? 'dark' : ''
     return (
       <div className={'page main ' + darkClass}>
      
@@ -24,7 +24,7 @@ class Main extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    staff: state.staff
+    mainState: state.mainState
   }
 }
 const mapDispatchToProps = {
