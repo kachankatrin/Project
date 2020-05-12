@@ -2,7 +2,7 @@
   .select-margin {
     margin: 2rem 0;
   }
-  .inputBg {
+  .input-bg {
     align-self: flex-start;
     height: 24px;
     border-radius: 5px;
@@ -35,7 +35,7 @@
 }
   .flex {
     width: 65%;
-    .inputBg {
+    .input-bg {
       flex: 1;
       &:first-child {
         margin-right: 2rem;

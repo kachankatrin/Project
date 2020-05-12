@@ -25,7 +25,7 @@ export const initStore = {
   isModalOpen: false,
   modalProductName: '',
   isDarkMode: false,
-  productsForModal: null,
+  productForModal: null,
   ismoreCriteriasOpen: false,
   loading: false,
   text: 'Enter valid search query',
@@ -114,7 +114,7 @@ export const actionReducer = (initialState = initStore, action) => {
     return {
       ...initialState,
       modalProductName: modalObj.product_name,
-      productsForModal: modalObj
+      productForModal: modalObj
     }
   }
   return initialState
@@ -133,7 +133,7 @@ export const naviReducer = (initialState = naviStore, action) => {
 const favStore = {
   favoriteProducts: [],
   activeIndex: null,
-  productsForModal: null,
+  productForModal: null,
   Carousel: null,
   modalProductName: '',
   isFavModalOpen: false
@@ -187,7 +187,7 @@ export const productReducer = (initialState = favStore, action) => {
     console.log(initialState.Carousel[initialState.activeIndex])
     return {
       ...initialState,
-      productsForModal: initialState.Carousel[initialState.activeIndex], //.filter((item, index) => index === initialState.activeIndex),
+      productForModal: initialState.Carousel[initialState.activeIndex], //.filter((item, index) => index === initialState.activeIndex),
       modalProductName: initialState.Carousel.filter((item, index) => index === initialState.activeIndex)[0].product_name
     }
   }
@@ -204,7 +204,7 @@ export const productReducer = (initialState = favStore, action) => {
     return {
       ...initialState,
       modalProductName: modalObj.product_name,
-      productsForModal: modalObj
+      productForModal: modalObj
     }
   }
   if (action.type === OPEN_FAV_MODAL) {

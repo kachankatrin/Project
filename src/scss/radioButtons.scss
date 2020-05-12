@@ -1,6 +1,6 @@
-.ragiogroup {
+.radio-group {
   margin: 0.5rem 0;
-  .radioContainer {
+  .radio-container {
     position: relative;
     padding: 0 2.5rem;
     cursor: pointer;
@@ -9,7 +9,7 @@
       opacity: 0;
       cursor: pointer;
       &:checked ~ .radio-bg {
-        .customRadio {
+        .custom-radio {
           background-color: #d63447;
           &:after {
             display: block;
@@ -17,7 +17,7 @@
         }
       }
       &:hover ~ .radio-bg {
-        .customRadio {
+        .custom-radio {
           background-color: #d1cebd;
           cursor: pointer; 
         }
@@ -31,7 +31,7 @@
       height: 1.6rem;
       background-color: white;
       border-radius: 50%;
-    .customRadio {
+    .custom-radio {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -52,7 +52,7 @@
     }
   }
     &:hover input:checked ~ .radio-bg{
-      .customRadio {
+      .custom-radio {
         background-color: #d63447;
       }
     }

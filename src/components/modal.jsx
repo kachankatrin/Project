@@ -4,11 +4,7 @@ import SmallInfo from '../components/SmallInfo';
 import Ingredients from '../components/Ingredients';
 
 function Modal(props) {
-  console.log("pppp", props)
-  console.log("pppp", props.products.id, 'products')
   const nutrimentLevelsKeys = Object.keys(props.products.nutrient_levels)
-  console.log(nutrimentLevelsKeys, props.products.nutrient_levels)
-  console.log(props.isFavoriteProduct)
   return (
     <div className={'modal-container ' + props.className}>
       <div className='close-modal'>
@@ -22,7 +18,7 @@ function Modal(props) {
         <h1>{props.product}</h1>
         <h2>all about product</h2>
         <div className='modal-info flex'>
-          <div className>
+          <div>
             <SmallInfo products={props.products} />
             {props.products.ingredients_analysis_tags
               ? <Ingredients products={props.products} />

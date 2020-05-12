@@ -1,4 +1,4 @@
-export const api = `https://world.openfoodfacts.org/cgi/search.pl?search_simple=1&json=true&action=process&sort_by=unique_scans_n&page_size=20&search_terms=`
+export const api = `https://us.openfoodfacts.org/cgi/search.pl?search_simple=1&json=true&action=process&sort_by=unique_scans_n&page_size=20&search_terms=`
 export const criterion = [
   { '': 'choose a criterion' },
   { 'brands': 'brands' },
@@ -60,4 +60,7 @@ export const Capitalize = (str) => {
 export const RemoveUnderscore = (str) => {
   const cleanedStr = str.split('_').join(' ');
   return Capitalize(cleanedStr)
+}
+export const sliceItemIfNeeded = (item) => {
+   return item.includes(':') ? item.slice(item.indexOf(':') + 1) : item;
 }

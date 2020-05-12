@@ -29,11 +29,11 @@ export const fetchOOF = (search, page, tagtype, tagContains, tag, tagtype1, tagC
     console.log("HERE OOF", api, searchCriteria)
     const data = await fetch(`${api}${searchCriteria}`, {
       method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': "application/x-www-form-urlencoded",
-        'User-Agent': 'HealthyFoodChoices - Android - Version 1.0 - http://localhost:3002/'
-      },
+      //mode: 'cors',
+      // headers: {
+      //  'Content-Type': "application/x-www-form-urlencoded",
+      //  'User-Agent': 'HealthyFoodChoices - Version 1.0 - http://localhost'
+      // },
       redirect: 'follow'
     })
     console.log(data)
