@@ -1,6 +1,6 @@
 .menu-navigation {
   background-color: #d63447;
-    height: 5.4rem;
+  height: 5.4rem;
   .sandwitch-menu {
     display: none;
     height: 4rem;
@@ -17,26 +17,25 @@
       }
     }
   }
-    .navigation {
+  .navigation {
     background-color: #d63447;
     position: fixed;
     z-index: 150;
-      display: flex;
-      width: 100%;
-      margin: 0 auto;
-      justify-content: space-evenly;
-      
-      li {
-        padding: 1.5rem;
-        width: max-content;
-        &:hover {
-          text-decoration: underline;
-          transform: scale(1.1); 
-          &:active {
-            transform: scale(0.9);
-          }
-        }  
-      }
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    li {
+      padding: 1.5rem;
+      width: max-content;
+      &:hover {
+        text-decoration: underline;
+        transform: scale(1.1); 
+        &:active {
+          transform: scale(0.9);
+        }
+      }  
+    }
     .toggleNavi {
       &:before{
         background-color: #f6eedf;
@@ -48,6 +47,5 @@
         }
       }
     }
-
   }
 }

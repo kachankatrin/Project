@@ -13,7 +13,6 @@ function CreatePages(props) {
       }
       M.push(li(current + 3, '...'), li(last, `${last}`))
     }
-
     if (last > 9 && current >= 6 && last - current > 3) {
       M.push(li(current - 3, '...'));
       for (let i = current - 2; i <= current + 2; i++) {
@@ -27,32 +26,46 @@ function CreatePages(props) {
         M.push(li(i, `${i}`))
       }
     }
-    console.log(M, 'mmmmmmm')
     return M.map(item => item)
   }
   function li(page, text) {
-    return <li className={props.currentPage === page
-      ? 'current'
-      : ''} value={page} id={page} onClick={() => props.handlePagination(page)}>{text}</li>
+    return <li 
+      className={props.currentPage === page ? 'current' : ''} 
+      value={page} 
+      id={page} 
+      onClick={() => props.handlePagination(page)}
+    >
+      {text}
+    </li>
   }
-  console.log(props, 'propssss')
   const numeratedList = pagination(props.currentPage, props.allPages)
   const newLi = props.allPages > 1
     ? <ul className="paging">
-      <li value='0' id="prev" onClick={() => props.handlePagination(props.currentPage > 1
-        ? (props.currentPage - 1)
-        : props.currentPage)}>Prev</li>
-      {numeratedList}
-      <li value='' id='next' onClick={() => props.handlePagination(props.currentPage < props.allPages
-        ? (props.currentPage + 1)
-        : props.currentPage)}>Next</li>
-    </ul>
+        <li 
+          value='0' 
+          id="prev" 
+          onClick={() => props.handlePagination(props.currentPage > 1
+            ? (props.currentPage - 1)
+            : props.currentPage)
+          }
+        >
+          Prev
+        </li>
+        {numeratedList}
+        <li 
+          value='' 
+          id='next' 
+          onClick={() => props.handlePagination(props.currentPage < props.allPages
+            ? (props.currentPage + 1)
+            : props.currentPage)
+          }
+        >
+          Next
+        </li>
+      </ul>
     : null;
-  console.log(props.allPages, 'props')
   return (
-    props.allPages > 0 
-      ? newLi 
-      : null
+    props.allPages > 0 ? newLi : null
   )
 }
 export default CreatePages;

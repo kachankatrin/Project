@@ -19,26 +19,26 @@ function Favorites(props) {
     window.addEventListener("mousemove", props.handleCarousel);
     return () => {
       window.removeEventListener("mousemove", props.handleCarousel);
-    };
-  })
+    }
+  });
   const handleProductClick = (product, index) => {
-    props.handleModalFavOpen()
-    props.handleSelectFavoriteProduct(product)
-    props.changeActiveIndex(index)
+    props.handleModalFavOpen();
+    props.handleSelectFavoriteProduct(product);
+    props.changeActiveIndex(index);
   }
   const darkClass = props.mainState.isDarkMode ? 'dark' : '';
-  const darkModal = props.mainState.isDarkMode ? 'darkModal' : '';
+  const darkModal = props.mainState.isDarkMode ? 'dark-modal' : '';
   const style = {
     display: 'block'
   }
   return (
     <div className={'page container ' + darkClass}>
-      <h1>Products</h1>
+      <h1>Favorites</h1>
       <ul className='grid-container'>
         {props.favoriteProducts.map((item, index) => {
-          return <Product 
+          return <Product
             item={item}
-            products={item}
+            product={item}
             key={index}
             handleProductClick={(product) => handleProductClick(product, index)}
             addProduct={props.addProduct}
@@ -47,30 +47,30 @@ function Favorites(props) {
           />
         })}
       </ul>
-      {props.isFavModalOpen 
+      {props.isFavModalOpen
         ? <Modal
           style={style}
           handlePrevious={() => { props.handlePrevious(props.Carousel); props.getPreviousInfo() }}
           handleNext={() => { props.handleNext(props.Carousel); props.getPreviousInfo() }}
           handleModalOpen={props.handleModalFavOpen}
-          product={props.modalProductName}
-          products={props.productForModal}
+          productName={props.modalProductName}
+          product={props.productForModal}
           className={darkModal}
         />
-        : null}
+        : null
+      }
     </div>
   )
 }
-
 const mapStateToProps = (state) => {
   return {
-    favoriteProducts: state.product.favoriteProducts,
+    favoriteProducts: state.favProducts.favoriteProducts,
     mainState: state.mainState,
-    activeIndex: state.product.activeIndex,
-    Carousel: state.product.Carousel,
-    productForModal: state.product.productForModal,
-    modalProductName: state.product.modalProductName,
-    isFavModalOpen: state.product.isFavModalOpen
+    activeIndex: state.favProducts.activeIndex,
+    Carousel: state.favProducts.Carousel,
+    productForModal: state.favProducts.productForModal,
+    modalProductName: state.favProducts.modalProductName,
+    isFavModalOpen: state.favProducts.isFavModalOpen
   }
 }
 const mapDispatchToProps = {

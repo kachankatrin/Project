@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.scss';
 import { 
-  fetchOOF, 
+  fetchOFF, 
   handleInput, 
   handleSelect, 
   handleToggle, 
@@ -13,8 +13,41 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ResButton from '../components/button';
 import MoreCriterias from '../components/MoreCriterias';
+import { withRouter } from "react-router-dom";
+
 
 class SearchCriterias extends React.Component {
+  search = () => {
+    this.props.fetchOFF(
+      this.props.mainState.search, 
+      1,
+      this.props.mainState.tagtype,
+      this.props.mainState.tagContains,
+      this.props.mainState.tag,
+      this.props.mainState.tagtype1,
+      this.props.mainState.tagContains1,
+      this.props.mainState.tag1,
+      this.props.mainState.additives,
+      this.props.mainState.ingPalmOil,
+      this.props.mainState.ingMayBePalmOil,
+      this.props.mainState.ingPalmOilORMayBePalmOil,
+      this.props.mainState.nutriment,
+      this.props.mainState.comparement,
+      this.props.mainState.nutrimentValue,
+      this.props.mainState.energyUnit,
+      this.props.mainState.nutriment1,
+      this.props.mainState.comparement1,
+      this.props.mainState.nutrimentValue1,
+      this.props.mainState.energyUnit1
+    )
+    this.props.history.push("/results");
+  }
+  keyPressed = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      this.search()
+    }
+  }
   render() {
     const darkClass = this.props.mainState.isDarkMode ? 'dark' : '';
     return (
@@ -27,7 +60,7 @@ class SearchCriterias extends React.Component {
           <span>l</span>
           <span>e</span>
         </h1>
-        <form>
+        <form onKeyPress={this.keyPressed}>
           <div className={'input-bg ' + darkClass}>
             <input
               incremental={true}
@@ -39,29 +72,7 @@ class SearchCriterias extends React.Component {
             />
           </div>
           <div className='searchLinkBtn'>
-            <ResButton
-              fetchOOF={this.props.fetchOOF}
-              search={this.props.mainState.search}
-              products={this.props.mainState.products}
-              tagtype={this.props.mainState.tagtype}
-              tagContains={this.props.mainState.tagContains}
-              tag={this.props.mainState.tag}
-              tagtype1={this.props.mainState.tagtype1}
-              tagContains1={this.props.mainState.tagContains1}
-              tag1={this.props.mainState.tag1}
-              additives={this.props.mainState.additives}
-              ingPalmOil={this.props.mainState.ingPalmOil}
-              ingMayBePalmOil={this.props.mainState.ingMayBePalmOil}
-              ingPalmOilORMayBePalmOil={this.props.mainState.ingPalmOilORMayBePalmOil}
-              nutriment={this.props.mainState.nutriment}
-              comparement={this.props.mainState.comparement}
-              nutrimentValue={this.props.mainState.nutrimentValue}
-              energyUnit={this.props.mainState.energyUnit}
-              nutriment1={this.props.mainState.nutriment1}
-              comparement1={this.props.mainState.comparement1}
-              nutrimentValue1={this.props.mainState.nutrimentValue1}
-              energyUnit1={this.props.mainState.energyUnit1}
-            />
+            <ResButton handleClick={this.search} />
             <Link to='/search/more' onClick={this.props.handlemoreCriteriasOpen}>Advanced search</Link>
           </div>
           {this.props.mainState.ismoreCriteriasOpen
@@ -74,31 +85,10 @@ class SearchCriterias extends React.Component {
                   handleToggle={this.props.handleToggle} 
                   handleRadio={this.props.handleRadio} 
                 />
-                <ResButton
-                  fetchOOF={this.props.fetchOOF}
-                  search={this.props.mainState.search}
-                  products={this.props.mainState.products}
-                  tagtype={this.props.mainState.tagtype}
-                  tagContains={this.props.mainState.tagContains}
-                  tag={this.props.mainState.tag}
-                  tagtype1={this.props.mainState.tagtype1}
-                  tagContains1={this.props.mainState.tagContains1}
-                  tag1={this.props.mainState.tag1}
-                  additives={this.props.mainState.additives}
-                  ingPalmOil={this.props.mainState.ingPalmOil}
-                  ingMayBePalmOil={this.props.mainState.ingMayBePalmOil}
-                  ingPalmOilORMayBePalmOil={this.props.mainState.ingPalmOilORMayBePalmOil}
-                  nutriment={this.props.mainState.nutriment}
-                  comparement={this.props.mainState.comparement}
-                  nutrimentValue={this.props.mainState.nutrimentValue}
-                  energyUnit={this.props.mainState.energyUnit}
-                  nutriment1={this.props.mainState.nutriment1}
-                  comparement1={this.props.mainState.comparement1}
-                  nutrimentValue1={this.props.mainState.nutrimentValue1}
-                  energyUnit1={this.props.mainState.energyUnit1}
-                />
+                <ResButton handleClick={this.search} />
               </div>
-            : null}
+            : null
+          }
         </form>
       </div>
     );
@@ -110,7 +100,7 @@ const mapStateToProps = (state) => {
   }
 }
 const mapDispatchToProps = {
-  fetchOOF,
+  fetchOFF,
   handleInput,
   handleSelect,
   handleToggle,
@@ -118,4 +108,4 @@ const mapDispatchToProps = {
   handleDarkMode,
   handlemoreCriteriasOpen,
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SearchCriterias);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchCriterias));

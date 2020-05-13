@@ -9,9 +9,9 @@ import App from './App';
 const history = createBrowserHistory;
 ReactDOM.render(
     <Provider store={store}>
-    <BrowserRouter history={history}>
-      <App />
-    </BrowserRouter>
+      <BrowserRouter history={history}>
+        <App />
+      </BrowserRouter>
     </Provider>
     ,
   document.getElementById('root')

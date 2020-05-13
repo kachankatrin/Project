@@ -8,11 +8,11 @@
     border-radius: 5px;
     width: 65%;
     input[type=search] {
-    padding: 0.5rem;
-    border-radius: 5px;
+      padding: 0.5rem;
+      border-radius: 5px;
     }
-  form {
-    height: 100%;
+    form {
+      height: 100%;
       label {
         width: 100%;
         padding: 0rem;
@@ -31,8 +31,8 @@
           }
         }
       }
+    }
   }
-}
   .flex {
     width: 65%;
     .input-bg {
@@ -42,7 +42,7 @@
       }
     }
   }
-    .toggle-span{
+  .toggle-span{
     font-size: 13px;
   }
   .nutriments {

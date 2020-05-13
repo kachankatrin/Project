@@ -5,12 +5,13 @@
   }
   .btnmy {
     background-color: inherit;
+    padding: 0.5rem 0 0 0.5rem;
     .fas {
       color: #d63447;
     }
     .far {
       color: #d63547;
-    font-size: 1.4rem;
+      font-size: 1.4rem;
     }
   }
   .loader { 
@@ -23,72 +24,72 @@
     height: 40px;
     animation: spin 2s linear infinite;
   }
-    .grid-container {
-      padding: 5rem 0;
-      justify-content: center;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
-      grid-gap: 2vmin;
-      grid-auto-rows: 250px;
-      li {
+  .grid-container {
+    padding: 5rem 0;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, max-content));
+    grid-gap: 2vmin;
+    grid-auto-rows: 250px;
+    li {
+      transition: all .5s ease-in-out;
+      border-radius: 10px;
+      .product-grid {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
         transition: all .5s ease-in-out;
-        border-radius: 10px;
-        .product-grid {
-          display: flex;
-          flex-flow: column;
-          height: 100%;
-          transition: all .5s ease-in-out;
-          img {
-            object-fit: contain;
-            margin: 1rem;
-          }
-          p {
-            padding: 0 1rem 1rem;
-            text-align: center;
-            font-family: Montserrat-SemiBold;
-            color: #000000a6;
-            font-size: 1.3rem;
-          }
+        img {
+          object-fit: contain;
+          margin: 1rem;
+          margin-top: 0.5rem;
         }
-        &:hover {
-          transform: scale(1.3);
-          height: fit-content;
+        p {
+          padding: 0 1rem 1rem;
+          text-align: center;
+          font-family: Montserrat-SemiBold;
+          color: #000000a6;
+          font-size: 1.3rem;
+        }
+      }
+      &:hover {
+        transform: scale(1.3);
+        height: fit-content;
         background-color: #f57b51;
         z-index: 100;
         box-shadow: 6px 6px 6px #d1cebd;
       }
-      }
-  
-    }      
-    .paging {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      flex-flow: row wrap;
-      li {
-        padding: 1.5rem;
-        text-align: center;
-        font-family: Montserrat-SemiBold;
-        color: #000000a6;
-        font-size: 1.7rem;
-        margin: 0 1rem;
-        &:hover {
-          transform: scale(1.2);
+    }
+  }      
+  .paging {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-flow: row wrap;
+    li {
+      padding: 1.5rem;
+      text-align: center;
+      font-family: Montserrat-SemiBold;
+      color: #000000a6;
+      font-size: 1.7rem;
+      margin: 0 1rem;
+      &:hover {
+        transform: scale(1.2);
         background-color: rgba(214, 52, 71, 0.6);
         border-radius: 20px;
-        }
       }
-      .current {
+    }
+    .current {
+      background-color: #d63447;
+      border: 1px solid #d63447;
+      border-radius: 20px;
+      &:hover {
+        transform: scale(1.4);
         background-color: #d63447;
-        border: 1px solid #d63447;
-        border-radius: 20px;
-        &:hover {
-          transform: scale(1.4);
-          background-color: #d63447;
-        }
       }
     }
   }
+}
 h5 {
   font-family: Montserrat-Regular;
   padding: 2rem 0;

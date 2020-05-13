@@ -2,23 +2,23 @@
 @import './criterias-nutriments.scss';
 .advanced{
   width: 55%;
-.more-criterias {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0;
-  .criterias-nutriments, .Ingredients {
-    width: 44%;
-  }
-  .toggle-search{
-    &:before {
-      background-color: #d63447;
+  .more-criterias {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    .criterias-nutriments, .Ingredients {
+      width: 44%;
     }
-    &:checked {
-      background-color: #d63447;
+    .toggle-search{
       &:before {
-        border: 0.5px solid #d1cebd;
+        background-color: #d63447;
       }
-    }
-  } 
-}
+      &:checked {
+        background-color: #d63447;
+        &:before {
+          border: 0.5px solid #d1cebd;
+        }
+      }
+    } 
+  }
 }

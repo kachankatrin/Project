@@ -11,7 +11,7 @@
     top: 2%;
     right: 3%;
     &:hover {
-      // cursor: pointer;
+      cursor: pointer;
     }
     .fas {
       position: absolute;
@@ -23,8 +23,6 @@
     }
   }
   .button {
-    // position: sticky;
-    // top: 50%;
     :hover {
       cursor: pointer;
       color: #d63447;
@@ -33,14 +31,6 @@
       font-size: 5rem;
       position: absolute;
     }
-    // background-color: transparent;
-    // border-radius: 30px;
-    // font-family: monospace;
-    // font-size: 20px;
-    // font-weight: 600;
-    // color: #3f00ffad;
-    // z-index: 1000;
-    
   }
   .prev {
     left: 1%;
@@ -82,12 +72,12 @@
     picture{
       margin: 1rem auto;
       text-align: center;
-    img {
-      object-fit: contain;
-      align-self: start;
-      flex: 2;
+      img {
+        object-fit: contain;
+        align-self: start;
+        flex: 2;
+      }
     }
-  }
     h1 {
       color: #d63447;
       font-family: Montserrat-Bold;

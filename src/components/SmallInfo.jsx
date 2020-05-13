@@ -1,33 +1,41 @@
 import React from 'react';
-import { GetSingleItem } from './productCharacteristics'
+import { GetSingleItem } from './productCharacteristics';
 
 function SmallInfo(props) {
   return (
     <ul>
-      {props.products.quantity
-        ? <li><span className='infoName'>Quantity: </span><span>{props.products.quantity}</span></li>
-        : null}
-      {props.products.packaging
-        ? <GetSingleItem array={props.products.packaging.split(',')} name='Packaging' />
-        : null}
-      {props.products.brands
-        ? <GetSingleItem array={props.products.brands.split(',')} name='Brands' />
-        : null}
-      {props.products.categories
-        ? <GetSingleItem array={props.products.categories.split(',')} name='Categories' />
-        : null}
-      {props.products.manufacturing_places
-        ? <GetSingleItem array={props.products.manufacturing_places.split(',')} name='Manufacturing or processing places' />
-        : null}
-      {props.products.stores
-        ? <GetSingleItem array={props.products.stores.split(',')} name='Stores' />
-        : null}
-      {props.products.countries_tags
-        ? <GetSingleItem array={props.products.countries_tags} name='Countries' />
-        : null}
-      {props.products.labels
-        ? <GetSingleItem array={props.products.labels.split(',')} name='Labels, certifications, awards' />
-        : null}
+      {props.product.quantity
+        ? <li><span className='infoName'>Quantity: </span><span>{props.product.quantity}</span></li>
+        : null
+      }
+      {props.product.packaging
+        ? <GetSingleItem array={props.product.packaging.split(',')} name='Packaging' />
+        : null
+      }
+      {props.product.brands
+        ? <GetSingleItem array={props.product.brands.split(',')} name='Brands' />
+        : null
+      }
+      {props.product.categories
+        ? <GetSingleItem array={props.product.categories.split(',')} name='Categories' />
+        : null
+      }
+      {props.product.manufacturing_places
+        ? <GetSingleItem array={props.product.manufacturing_places.split(',')} name='Manufacturing or processing places' />
+        : null
+      }
+      {props.product.stores
+        ? <GetSingleItem array={props.product.stores.split(',')} name='Stores' />
+        : null
+      }
+      {props.product.countries_tags
+        ? <GetSingleItem array={props.product.countries_tags} name='Countries' />
+        : null
+      }
+      {props.product.labels
+        ? <GetSingleItem array={props.product.labels.split(',')} name='Labels, certifications, awards' />
+        : null
+      }
     </ul>
   )
 }

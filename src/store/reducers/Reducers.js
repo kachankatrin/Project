@@ -1,4 +1,4 @@
-import { DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS, OPEN_MENU, ADD_PRODUCT, REMOVE_PRODUCT, CHANGE_ACTIVE_INDEX, CLICK_PREVIOUS, GET_PREV_INFO, FAVOTITES_LOADED, SELECT_FAV_MODAL, OPEN_FAV_MODAL, CLICK_NEXT } from '../actions/Actions';
+import { DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS, OPEN_MENU, ADD_PRODUCT, REMOVE_PRODUCT, CHANGE_ACTIVE_INDEX, CLICK_PREVIOUS, GET_CURRENT_INFO, FAVOTITES_LOADED, SELECT_FAV_MODAL, OPEN_FAV_MODAL, CLICK_NEXT } from '../actions/Actions';
 
 export const initStore = {
   products: [],
@@ -35,9 +35,7 @@ const naviStore = {
 }
 
 export const actionReducer = (initialState = initStore, action) => {
-  console.log(action.payload)
   if (action.type === DATA_LOADED) {
-    console.log(initialState.loading, 'fetchhhhhhhhhh')
     return {
       ...initialState,
       products: action.payload.products,
@@ -46,13 +44,11 @@ export const actionReducer = (initialState = initStore, action) => {
     }
   }
   if (action.type === CHANGE_LOADER_STATUS) {
-    console.log(initialState.loading, 'xfgfyfjy')
     return {
       ...initialState,
       loading: action.payload.show,
       text: action.payload.text
     }
-
   }
   if (action.type === CHANGE_SEARCH) {
     return {
@@ -61,9 +57,8 @@ export const actionReducer = (initialState = initStore, action) => {
     }
   }
   if (action.type === CHANGE_SELECT) {
-    console.log(action.payload.value.split(','))
-    const valuesSplited = action.payload.value.split(',')
-    const lastKey = valuesSplited.length > 1 ? valuesSplited[1] : null
+    const valuesSplited = action.payload.value.split(',');
+    const lastKey = valuesSplited.length > 1 ? valuesSplited[1] : null;
     return {
       ...initialState,
       [action.payload.key]: valuesSplited[0],
@@ -73,19 +68,19 @@ export const actionReducer = (initialState = initStore, action) => {
   if (action.type === CHANGE_TOGGLE) {
     return {
       ...initialState,
-      [action.payload.key]: action.payload.target.checked === true ? 'contains' : 'does_not_contain'
+      [action.payload.key]: action.payload.target.checked === true 
+        ? 'contains' 
+        : 'does_not_contain'
     }
   }
   if (action.type === CHANGE_RADIO) {
-    console.log(action.payload)
     return {
       ...initialState,
       [action.payload.key]: action.payload.value
     }
   }
   if (action.type === CLEAR_STATE) {
-    action.payload.isDarkMode = initialState.isDarkMode
-    console.log(initialState, action.payload)
+    action.payload.isDarkMode = initialState.isDarkMode;
     return initialState = action.payload
   }
   if (action.type === OPEN_MODAL) {
@@ -108,9 +103,7 @@ export const actionReducer = (initialState = initStore, action) => {
   }
 
   if (action.type === SELECT_MODAL) {
-    console.log(action.payload, action.type)
-    const modalObj = initialState.products.filter(item => item.id === action.payload.id)[0]
-    console.log(modalObj, initialState)
+    const modalObj = initialState.products.filter(item => item._id === action.payload.id)[0];
     return {
       ...initialState,
       modalProductName: modalObj.product_name,
@@ -138,8 +131,7 @@ const favStore = {
   modalProductName: '',
   isFavModalOpen: false
 }
-export const productReducer = (initialState = favStore, action) => {
-  console.log("INITIAL", [...initialState.favoriteProducts])
+export const favoriteProductReducer = (initialState = favStore, action) => {
   let newProductsArr = [];
   initialState.favoriteProducts.map((item, index) => {
     let obj = {};
@@ -153,13 +145,8 @@ export const productReducer = (initialState = favStore, action) => {
     }
   }
   if (action.type === REMOVE_PRODUCT) {
-    console.log(action.payload, 'acPayl')
-    console.log(action.payload)
     return {
-      favoriteProducts: initialState.favoriteProducts.filter((item) => {
-        console.log(initialState.favoriteProducts, 'isFavProductINNNNNNN')
-        return item.id !== action.payload
-      })
+      favoriteProducts: initialState.favoriteProducts.filter((item) => item.id !== action.payload)
     }
   }
   if (action.type === CHANGE_ACTIVE_INDEX) {
@@ -171,20 +158,21 @@ export const productReducer = (initialState = favStore, action) => {
   if (action.type === CLICK_PREVIOUS) {
     return {
       ...initialState,
-      activeIndex: initialState.activeIndex > 0 ? initialState.activeIndex - action.payload.true : action.payload.false,
+      activeIndex: initialState.activeIndex > 0 
+        ? initialState.activeIndex - action.payload.true 
+        : action.payload.false,
     }
   }
   if (action.type === CLICK_NEXT) {
     return {
       ...initialState,
-      activeIndex: initialState.activeIndex < initialState.Carousel.length - 1 ? initialState.activeIndex + action.payload.true : action.payload.false
+      activeIndex: initialState.activeIndex < initialState.Carousel.length - 1 
+        ? initialState.activeIndex + action.payload.true 
+        : action.payload.false
 
     }
   }
-  if (action.type === GET_PREV_INFO) {
-    console.log("FFFFFFF", initialState.activeIndex)
-    console.log(initialState.Carousel)
-    console.log(initialState.Carousel[initialState.activeIndex])
+  if (action.type === GET_CURRENT_INFO) {
     return {
       ...initialState,
       productForModal: initialState.Carousel[initialState.activeIndex], //.filter((item, index) => index === initialState.activeIndex),
@@ -198,9 +186,7 @@ export const productReducer = (initialState = favStore, action) => {
     }
   }
   if (action.type === SELECT_FAV_MODAL) {
-    console.log(action.payload, action.type)
     const modalObj = initialState.Carousel.filter(item => item.id === action.payload.id)[0]
-    console.log(modalObj, initialState)
     return {
       ...initialState,
       modalProductName: modalObj.product_name,

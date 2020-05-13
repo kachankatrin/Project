@@ -29,22 +29,22 @@
       padding-top: 4rem;
       button, a {
         font-family: Montserrat-SemiBold;
-      line-height: 1.6;
-      letter-spacing: 1px;
-      color: #000000a6;
-      font-size: 14px;
-      padding: 1rem; 
-      text-align: center;
-      &:hover {
-        cursor: pointer;
-      }
+        line-height: 1.6;
+        letter-spacing: 1px;
+        color: #000000a6;
+        font-size: 14px;
+        padding: 1rem; 
+        text-align: center;
+        &:hover {
+          cursor: pointer;
+        }
       }
       a{
         &:hover {
           color: #f57a51;
           transform: scale(1.1);
         }
-         &:active {
+        &:active {
           transform: scale(0.9);
           &:not(:active) {
             transform: scale(1);
@@ -55,7 +55,6 @@
         }
       }
     }
-    
   }
   button {
     padding: 1rem 1.9rem;
@@ -86,7 +85,6 @@
   background-color: white;
   margin: 1rem 0;
   input[type=search] {
-   
       width: 100%;
       border: none;
       box-shadow: 0 0 2px #d1cebd;
@@ -111,6 +109,7 @@
       }
     } 
 }
+
 input:-webkit-autofill, select:-webkit-autofill {
   width: 100%;
   border: 1px solid #d1cebd;
@@ -119,9 +118,8 @@ input:-webkit-autofill, select:-webkit-autofill {
   font-family: Montserrat-SemiBold;
   -webkit-box-shadow: 0 0 0px 1000px rgba(246, 238, 223, 0.7) inset;
   transition: background-color 5000s ease-in-out 0s;
-  &:focus, &:active, &:hover{
+  &:focus, &:active, &:hover {
     -webkit-box-shadow: 3px 3px 9px #d1cebd;
     border: 0px solid #d1cebd;
-
   }
 }

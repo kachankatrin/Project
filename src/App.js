@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
 import SearchCriterias from './containers/Criterias';
 import { connect } from 'react-redux';
 import Results from './containers/Results';
@@ -14,25 +14,41 @@ class App extends React.Component {
     return (
       <div>
         <Nav handleMenuOpen={this.props.handleMenuOpen} isMenuOpen={this.props.navi.isMenuOpen}>
-          <NavLink activeClassName="active"
-            to='/search' className='naviItem' onClick={() => this.props.handleClearState(initStore)}>Search Criterias</NavLink>
-          <NavLink activeClassName="active" className='naviItem' to='/results'>Results</NavLink>
-          <NavLink activeClassName="active" className='naviItem' to='/favorites'>Favorites</NavLink>
+          <NavLink 
+            activeClassName="active"
+            to='/search' 
+            className='naviItem' 
+            onClick={() => this.props.handleClearState(initStore)}>
+              Search Criterias
+          </NavLink>
+          <NavLink 
+            activeClassName="active" 
+            className='naviItem' 
+            to='/results'>
+              Results
+          </NavLink>
+          <NavLink 
+            activeClassName="active" 
+            className='naviItem' 
+            to='/favorites'>
+              Favorites
+          </NavLink>
           <div>
-            <input type="checkbox" onChange={this.props.handleDarkMode} className="toggle toggleNavi"></input>
-            <label htmlFor='toggle'><span className="naviItem">Change Mode</span></label>
+            <input 
+              type="checkbox" 
+              onChange={this.props.handleDarkMode} 
+              className="toggle toggleNavi">
+            </input>
+            <label htmlFor='toggle'>
+              <span className="naviItem">Change Mode</span>
+            </label>
           </div>
         </Nav>
         <Switch>
-          <Route path='/search' component={() =>
-            <SearchCriterias />
-          }></Route>
-          <Route path='/results' component={() =>
-            <Results />
-          }></Route>
-          <Route path='/favorites' component={() =>
-            <Favorites />
-          }></Route>
+          <Route path='/' exact component={ () => <SearchCriterias /> } />
+          <Route path='/search' component={ () => <SearchCriterias /> }></Route>
+          <Route path='/results' component={ () => <Results /> }></Route>
+          <Route path='/favorites' component={ () => <Favorites /> }></Route>
         </Switch>
       </div>
     );

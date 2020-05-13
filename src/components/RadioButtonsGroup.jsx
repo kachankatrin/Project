@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function RadioButtons(props) {
   const { name, values, handleChange } = props;
@@ -16,8 +16,14 @@ function RadioButtons(props) {
                   name={name} value={item.value} onChange={handleChange}
                 />
                 <div className={'radio-bg ' + props.darkClass}>
-                  <span className='custom-radio' checked={item.checked}
-                    name={name} value={item.value} onChange={handleChange}></span>
+                  <span 
+                    className='custom-radio' 
+                    checked={item.checked}
+                    name={name} 
+                    value={item.value} 
+                    onChange={handleChange}
+                  >
+                  </span>
                 </div>
               </label>
             </div>
