@@ -1,4 +1,28 @@
-import { DATA_LOADED, CHANGE_SEARCH, CHANGE_SELECT, CHANGE_TOGGLE, CHANGE_RADIO, CLEAR_STATE, OPEN_MODAL, DARK_MODE, SELECT_MODAL, OPEN_CRITERIAS, CHANGE_LOADER_STATUS, OPEN_MENU, ADD_PRODUCT, REMOVE_PRODUCT, CHANGE_ACTIVE_INDEX, CLICK_PREVIOUS, GET_CURRENT_INFO, FAVOTITES_LOADED, SELECT_FAV_MODAL, OPEN_FAV_MODAL, CLICK_NEXT } from '../actions/Actions';
+import { 
+  DATA_LOADED, 
+  CHANGE_SEARCH, 
+  CHANGE_SELECT, 
+  CHANGE_TOGGLE, 
+  CHANGE_RADIO, 
+  CLEAR_STATE, 
+  OPEN_MODAL, 
+  DARK_MODE, 
+  SELECT_MODAL, 
+  OPEN_CRITERIAS, 
+  CHANGE_LOADER_STATUS, 
+  OPEN_MENU, 
+  ADD_PRODUCT, 
+  REMOVE_PRODUCT, 
+  CHANGE_ACTIVE_INDEX, 
+  CLICK_PREVIOUS, 
+  GET_CURRENT_INFO, 
+  FAVOTITES_LOADED, 
+  SELECT_FAV_MODAL, 
+  OPEN_FAV_MODAL, 
+  CLICK_NEXT,
+  CHANGE_ANIMATION 
+} from '../actions/Actions';
+import { loadStateFromLocalStorage } from '../../utils';
 
 export const initStore = {
   products: [],
@@ -29,6 +53,7 @@ export const initStore = {
   ismoreCriteriasOpen: false,
   loading: false,
   text: 'Enter valid search query',
+  animation: 'zoom'
 }
 const naviStore = {
   isMenuOpen: false
@@ -101,13 +126,18 @@ export const actionReducer = (initialState = initStore, action) => {
       isDarkMode: !initialState.isDarkMode
     }
   }
-
   if (action.type === SELECT_MODAL) {
     const modalObj = initialState.products.filter(item => item._id === action.payload.id)[0];
     return {
       ...initialState,
       modalProductName: modalObj.product_name,
       productForModal: modalObj
+    }
+  }
+  if (action.type === CHANGE_ANIMATION) {
+    return {
+      ...initialState,
+      animation: action.payload
     }
   }
   return initialState
@@ -124,7 +154,7 @@ export const naviReducer = (initialState = naviStore, action) => {
 }
 
 const favStore = {
-  favoriteProducts: [],
+  favoriteProducts: loadStateFromLocalStorage() || [],
   activeIndex: null,
   productForModal: null,
   Carousel: null,

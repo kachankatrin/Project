@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, Switch, NavLink, Redirect } from 'react-router-dom';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import SearchCriterias from './containers/Criterias';
-import { connect } from 'react-redux';
 import Results from './containers/Results';
 import Favorites from './containers/Favorites'
 import Nav from './components/Nav';
+import { connect } from 'react-redux';
+import 'rodal/lib/rodal.css';
 import './App.scss';
 import { handleClearState, handleDarkMode, handleMenuOpen } from './store/actions/Actions';
 import { initStore } from './store/reducers/Reducers';
-
 class App extends React.Component {
   render() {
     return (
@@ -30,7 +30,8 @@ class App extends React.Component {
           <NavLink 
             activeClassName="active" 
             className='naviItem' 
-            to='/favorites'>
+            to='/favorites'
+          >
               Favorites
           </NavLink>
           <div>

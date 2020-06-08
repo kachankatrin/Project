@@ -11,7 +11,8 @@ import {
   handleNext,
   handlePrevious,
   getPreviousInfo,
-  handleCarousel
+  handleCarousel,
+  handleAnimation
 } from '../store/actions/Actions';
 
 function Favorites(props) {
@@ -47,8 +48,7 @@ function Favorites(props) {
           />
         })}
       </ul>
-      {props.isFavModalOpen
-        ? <Modal
+       <Modal
           style={style}
           handlePrevious={() => { props.handlePrevious(props.Carousel); props.getPreviousInfo() }}
           handleNext={() => { props.handleNext(props.Carousel); props.getPreviousInfo() }}
@@ -56,9 +56,12 @@ function Favorites(props) {
           productName={props.modalProductName}
           product={props.productForModal}
           className={darkModal}
+          isModalOpen={props.isFavModalOpen}
+          handleAnimation={props.handleAnimation}
+          animation={props.mainState.animation}
+          stylebutton={style}
         />
-        : null
-      }
+   
     </div>
   )
 }
@@ -82,6 +85,7 @@ const mapDispatchToProps = {
   handlePrevious,
   getPreviousInfo,
   handleCarousel,
-  handleNext
+  handleNext,
+  handleAnimation
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

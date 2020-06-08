@@ -3,6 +3,32 @@
   flex-flow: row wrap;
   justify-content: space-between;
 }
+.rodal {
+  top: 0;
+  left: 5% !important;
+  width: 90% !important;
+  height: 100%;
+  z-index: 100;
+  .rodal-mask {
+    display: none;
+    width: 90%;
+  }
+  .rodal-dialog {
+    position: unset;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 101;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    width: unset !important;
+    height: unset;
+  }
+}
 .modal-container {
   .close-modal {
     height: 4rem;
@@ -20,6 +46,29 @@
         transform: scale(1.3);
         cursor: pointer;
       }
+    }
+  }
+  .rodal-close {
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    &:hover:after, &:hover:before {
+      background: #d63547;
+    }
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      background: #f57a51;
+      border-radius: 100%;
+      transition: background 0.2s;
+      padding: 0.3rem;
     }
   }
   .button {
@@ -59,9 +108,8 @@
   height: 100%;
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 5rem 0rem;
+  left: 5%;
+  margin: 5rem auto;
   padding: 8rem;
   max-height: calc(100vh - 50px);
   overflow-y: auto;

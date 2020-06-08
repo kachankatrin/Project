@@ -13,7 +13,9 @@ function RadioButtons(props) {
                 <input
                   type='radio'
                   checked={item.checked}
-                  name={name} value={item.value} onChange={handleChange}
+                  name={name} 
+                  value={item.value} 
+                  onChange={handleChange}
                 />
                 <div className={'radio-bg ' + props.darkClass}>
                   <span 

@@ -64,3 +64,24 @@ export const RemoveUnderscore = (str) => {
 export const sliceItemIfNeeded = (item) => {
    return item.includes(':') ? item.slice(item.indexOf(':') + 1) : item;
 }
+
+
+export const loadStateFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem('favArr');
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState)
+  } catch(err) {
+    return undefined;
+  }
+};
+
+export const saveStateToLocalStorage = (state) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('favArr', serializedState);
+  } catch(err) {
+ }
+}

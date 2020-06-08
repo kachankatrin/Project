@@ -1,4 +1,4 @@
-import { api } from '../../utils'
+import { api } from '../../utils';
 export const DATA_LOADED = 'DATA LOADED';
 export const CHANGE_SEARCH = 'CHANGE_SEARCH';
 export const CHANGE_SELECT = 'CHANGE_SELECT';
@@ -20,7 +20,8 @@ export const GET_CURRENT_INFO = 'GET_CURRENT_INFO';
 export const FAVOTITES_LOADED = 'FAVOTITES_LOADED';
 export const SELECT_FAV_MODAL = 'SELECT_FAV_MODAL';
 export const OPEN_FAV_MODAL = 'OPEN_FAV_MODAL';
-export const CLICK_NEXT = 'CLICK_NEXT'
+export const CLICK_NEXT = 'CLICK_NEXT';
+export const CHANGE_ANIMATION = 'CHANGE_ANIMATION';
 
 export const fetchOFF = (
   search, 
@@ -68,11 +69,6 @@ export const fetchOFF = (
     dispatch({ type: CHANGE_LOADER_STATUS, payload: { show: true, text: 'Loading...' } });
     const data = await fetch(`${api}${searchCriteria}`, {
       method: 'GET',
-      //mode: 'cors',
-      // headers: {
-      //  'Content-Type': "application/x-www-form-urlencoded",
-      //  'User-Agent': 'HealthyFoodChoices - Version 1.0 - http://localhost'
-      // },
       redirect: 'follow'
     });
     const json = await data.json();
@@ -112,7 +108,7 @@ export const handleClearState = (oldObj) => {
 }
 export const handleModalOpen = (e) => {
   return {
-    type: OPEN_MODAL
+    type: OPEN_MODAL,
   }
 }
 export const handleModalFavOpen = (e) => {
@@ -187,5 +183,11 @@ export const handleNext = (arr) => {
 export const handleCarousel = () => {
   return {
     type: FAVOTITES_LOADED
+  }
+}
+export const handleAnimation = (animation) => {
+  return {
+    type: CHANGE_ANIMATION,
+    payload: animation
   }
 }

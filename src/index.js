@@ -6,6 +6,12 @@ import { Provider } from 'react-redux';
 import { store } from './store/index'
 import './App.scss';
 import App from './App';
+import { saveStateToLocalStorage } from './utils';
+
+store.subscribe(() => {
+  const favoriteProducts = store.getState().favProducts.favoriteProducts
+  saveStateToLocalStorage(favoriteProducts);
+})
 const history = createBrowserHistory;
 ReactDOM.render(
     <Provider store={store}>

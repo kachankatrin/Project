@@ -6,7 +6,8 @@ import {
   handleDarkMode,
   handleSelectModalProduct,
   addProduct,
-  removeProduct
+  removeProduct,
+  handleAnimation
 } from '../store/actions/Actions';
 import { connect } from 'react-redux';
 import Spinner from "../components/Spinner";
@@ -83,16 +84,16 @@ class Results extends React.Component {
               <Spinner />
             </h5>
         }
-        {this.props.mainState.isModalOpen 
-          ? <Modal
+          <Modal
               handleModalOpen={this.props.handleModalOpen}
+              isModalOpen={this.props.mainState.isModalOpen}
+              handleAnimation={this.props.handleAnimation}
+              animation={this.props.mainState.animation}
               productName={this.props.mainState.modalProductName}
-              style={style}
+              stylebutton={style}
               product={this.props.mainState.productForModal}
               className={darkModal}
             />
-          : null
-        }
         <CreatePages 
           allPages={this.props.mainState.totalPages}
           currentPage={this.state.currentPage}
@@ -114,6 +115,7 @@ const mapDispatchToProps = {
   handleDarkMode,
   handleSelectModalProduct,
   addProduct,
-  removeProduct
+  removeProduct,
+  handleAnimation
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Results);
