@@ -20,7 +20,7 @@ html {
 body {
   font-size: 1.6rem;
   .fas {
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 0.5rem;
     color: #f57a51;
   }
@@ -115,7 +115,8 @@ label {
   font-family: Montserrat-Bold;
   border-top: 0.5rem solid#f57a51;
 }
-
+#yourElement {
+}
 @media only screen and (min-width: 300px) and (max-width: 459px) {
   html {
     font-size: 8px;

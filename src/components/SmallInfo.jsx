@@ -5,7 +5,10 @@ function SmallInfo(props) {
   return (
     <ul>
       {props.product.quantity
-        ? <li><span className='infoName'>Quantity: </span><span>{props.product.quantity}</span></li>
+        ? <li>
+          <span className='infoName'>Quantity: </span>
+          <span>{props.product.quantity}</span>
+        </li>
         : null
       }
       {props.product.packaging
